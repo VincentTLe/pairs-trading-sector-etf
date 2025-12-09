@@ -1,0 +1,55 @@
+Only 2 pairs selected (min: 3), skipping 2014
+Only 2 pairs selected (min: 3), skipping 2020
+Only 2 pairs selected (min: 3), skipping 2024
+
+================================================================================
+COMPREHENSIVE ANALYSIS: 180-90 Configuration
+================================================================================
+
+Tasks:
+1. Run 180-90 with monitoring ON
+2. Run 180-90 with monitoring OFF
+3. Calculate Sharpe ratios
+4. Analyze transaction cost impact
+5. Compare monitoring ON vs OFF
+
+======================================================================
+Running: optimal_180_90
+======================================================================
+Config: optimal_180_90
+Formation: 180d | Trading: 90d
+Monitoring: ON
+
+Running backtest...
+
+
+======================================================================
+RESULTS: optimal_180_90
+======================================================================
+
+Trades: 108
+Total PnL: $411.58
+Win Rate: 50.0%
+Sharpe Ratio: 0.451
+Max Drawdown: -3.2%
+Avg Holding: 10.9 days
+
+Transaction Cost Impact:
+    0 bps: Net PnL = $+411.58 (costs: $0.00, 0.0% of gross)
+    5 bps: Net PnL = $-668.42 (costs: $1,080.00, 262.4% of gross)
+   10 bps: Net PnL = $-1,748.42 (costs: $2,160.00, 524.8% of gross)
+   20 bps: Net PnL = $-3,908.42 (costs: $4,320.00, 1049.6% of gross)
+
+Exit Reasons:
+  convergence              :  51 trades, $+4,590.07
+  cointegration_drift      :   9 trades, $-189.09
+  stop_loss_time           :  37 trades, $-4,379.63
+  period_end               :   3 trades, $-157.82
+  max_holding              :   8 trades, $+548.04
+Traceback (most recent call last):
+  File "I:\Winter-Break-Research\scripts\comprehensive_analysis.py", line 308, in <module>
+    print(f"\n\u2713 Saved: results/optimal_180_90_monitoring_ON.csv")
+  File "C:\Users\LOQ\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 2: character maps to <undefined>

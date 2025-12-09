@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from .cpcv_correct import WalkForwardCPCV
+from .cross_validation import WalkForwardValidator as WalkForwardCPCV
 
 if TYPE_CHECKING:
     from .config import BacktestConfig

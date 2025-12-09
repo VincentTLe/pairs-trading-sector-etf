@@ -1,29 +1,37 @@
 #!/usr/bin/env python
 """
-Pairs Trading Backtest Runner with Mandatory CPCV Validation
+Pairs Trading Backtest Runner
+=============================
 
-This is the main entry point for running backtests. It includes:
+Main entry point for running backtests with optional CSCV validation.
+
+Features:
 - Walk-forward backtest execution
-- MANDATORY CPCV overfitting detection
+- Optional CSCV (Combinatorial Symmetric Cross-Validation) for PBO calculation
 - Validation against safety thresholds
 - Comprehensive reporting
 
 Usage:
-    # Standard run with CPCV validation (RECOMMENDED)
+------
+    # Standard run with validation (RECOMMENDED)
     python scripts/run_backtest.py --config configs/experiments/default.yaml
-    
-    # Quick run without CPCV (for debugging only)
+
+    # Quick run without CSCV validation (faster, for debugging)
     python scripts/run_backtest.py --config configs/experiments/default.yaml --no-cpcv
-    
+
     # Custom date range
     python scripts/run_backtest.py --config configs/experiments/default.yaml --start 2015 --end 2024
 
 Examples:
+---------
     # Run with full validation
     python scripts/run_backtest.py
-    
-    # Quick debug run
+
+    # Quick debug run (skip validation)
     python scripts/run_backtest.py --no-cpcv --no-save
+
+    # Run specific config for 2010-2024
+    python scripts/run_backtest.py -c configs/experiments/optimal_180_90.yaml --start 2010 --end 2024
 """
 
 import argparse
@@ -87,9 +95,10 @@ def main():
         help='End year for backtest'
     )
     parser.add_argument(
-        '--no-cpcv',
+        '--no-cpcv', '--no-cscv',
+        dest='no_cscv',
         action='store_true',
-        help='Skip CPCV validation (NOT RECOMMENDED - for debugging only)'
+        help='Skip CSCV validation (faster, for debugging only)'
     )
     parser.add_argument(
         '--no-save',
@@ -127,11 +136,11 @@ def main():
     prices = pd.read_csv(cfg.price_data_path, index_col=0, parse_dates=True)
     logger.info(f"Loaded {prices.shape[1]} ETFs, {prices.shape[0]} trading days")
     
-    # Run with or without CPCV
-    if args.no_cpcv:
-        # Legacy mode: simple backtest without validation
+    # Run with or without CSCV validation
+    if args.no_cscv:
+        # Quick mode: simple backtest without validation
         logger.warning("=" * 60)
-        logger.warning("CPCV VALIDATION DISABLED - RESULTS MAY BE OVERFIT")
+        logger.warning("CSCV VALIDATION DISABLED - Running quick backtest")
         logger.warning("=" * 60)
         
         logger.info(f"Running backtest: {args.start} - {args.end}")
@@ -154,9 +163,9 @@ def main():
             logger.warning("No trades generated for the requested period.")
             total_pnl = 0.0
     else:
-        # RECOMMENDED: Run with CPCV validation
+        # RECOMMENDED: Run with CSCV validation (for PBO calculation)
         pipeline_config = PipelineConfig(
-            run_cpcv=True,
+            run_cscv=True,  # Enable CSCV for PBO diagnostic
             max_pbo=args.max_pbo,
             save_results=not args.no_save,
             output_dir=cfg.output_dir,

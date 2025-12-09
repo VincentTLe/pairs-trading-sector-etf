@@ -17,6 +17,10 @@ import numpy as np
 import pandas as pd
 
 from pairs_trading_etf.cointegration.engle_granger import EngleGrangerResult, run_engle_granger
+from pairs_trading_etf.constants import (
+    DEFAULT_MIN_CORRELATION,
+    DEFAULT_MAX_CORRELATION,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -99,8 +103,8 @@ def compute_correlation_matrix(returns: pd.DataFrame) -> pd.DataFrame:
 def filter_pairs_by_correlation(
     tickers: Sequence[str],
     corr_matrix: pd.DataFrame,
-    min_corr: float = 0.60,
-    max_corr: float = 0.99,
+    min_corr: float = DEFAULT_MIN_CORRELATION,
+    max_corr: float = DEFAULT_MAX_CORRELATION,
 ) -> list[tuple[str, str, float]]:
     """Filter pairs by correlation threshold using the pre-computed matrix.
     
@@ -171,8 +175,8 @@ def _process_single_pair(
 def score_pairs(
     prices: pd.DataFrame,
     min_obs: int = 252,
-    min_corr: float = 0.60,
-    max_corr: float = 0.99,
+    min_corr: float = DEFAULT_MIN_CORRELATION,
+    max_corr: float = DEFAULT_MAX_CORRELATION,
     lookback: int | None = None,
     max_pairs: int | None = None,
     run_cointegration: bool = True,

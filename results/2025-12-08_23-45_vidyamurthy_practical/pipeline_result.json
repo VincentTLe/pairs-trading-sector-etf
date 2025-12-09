@@ -1,0 +1,46 @@
+{
+  "config_name": "vidyamurthy_practical",
+  "timestamp": "2025-12-08_23-45",
+  "performance": {
+    "total_pnl": 907.5866150368979,
+    "total_trades": 101,
+    "win_rate": 0.5643564356435643,
+    "sharpe_ratio": 1.2858437977170345,
+    "max_drawdown": 1011.3109170731374,
+    "profit_factor": 1.2343308923654037
+  },
+  "walkforward": {
+    "avg_is_return": 0.0010779785666816023,
+    "avg_oos_return": 0.0013747585773813847,
+    "positive_ratio": 0.4,
+    "purge_days": 26,
+    "embargo_days": 13,
+    "passed": false,
+    "warnings": [
+      "OOS positive ratio 40.0% < 55.0%"
+    ]
+  },
+  "cscv": {
+    "pbo": 0.1626984126984127,
+    "pbo_ci": [
+      0.0,
+      1.0
+    ],
+    "dsr": 2.1787376983136064,
+    "dsr_pvalue": 0.014675579768043234,
+    "degradation": 0.3766796356351963,
+    "rank_correlation": 1.0,
+    "risk_level": "LOW",
+    "is_overfit": false
+  },
+  "validation": {
+    "is_valid": false,
+    "cscv_passed": false,
+    "walkforward_passed": false,
+    "risk_level": "LOW",
+    "errors": [
+      "Walk-forward validation failed (positive 40.0%, avg OOS 0.14%)"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,1137 @@
+2025-12-07 23:33:43,509 - INFO - Loading price data from data\raw\etf_prices_fresh.csv...
+2025-12-07 23:33:43,624 - INFO - Loaded 5012 days of data for 119 ETFs
+2025-12-07 23:33:43,625 - INFO - Date range: 2005-01-03 00:00:00 to 2024-11-29 00:00:00
+
+2025-12-07 23:33:43,625 - INFO - Creating test configurations...
+2025-12-07 23:33:43,625 - INFO - Created 5 configurations to test
+
+2025-12-07 23:33:43,625 - INFO - 
+======================================================================
+2025-12-07 23:33:43,625 - INFO - TESTING: 252-252_baseline
+2025-12-07 23:33:43,625 - INFO - Formation: 252 days | Trading: 252 days
+2025-12-07 23:33:43,625 - INFO - Hedge Update: 63 days
+2025-12-07 23:33:43,625 - INFO - ======================================================================
+
+2025-12-07 23:33:43,625 - INFO - ============================================================
+2025-12-07 23:33:43,625 - INFO - Year 2010: Formation 2009
+2025-12-07 23:33:43,625 - INFO - ============================================================
+2025-12-07 23:33:43,627 - INFO - Selecting pairs from 112 tickers
+2025-12-07 23:33:43,752 - INFO - Pairs with corr 0.75-0.95: 57
+2025-12-07 23:33:43,961 - INFO - Cointegrated pairs: 19
+2025-12-07 23:33:43,961 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:44,291 - INFO - After rolling consistency: 8 pairs (removed 11)
+2025-12-07 23:33:44,291 - INFO - Selected 5 pairs
+2025-12-07 23:33:44,291 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0103, HL=13.2, range=0.228
+2025-12-07 23:33:44,291 - INFO -   2. ('EWU', 'EWL') [EUROPE]: p=0.0069, HL=6.9, range=0.162
+2025-12-07 23:33:44,291 - INFO -   3. ('EWG', 'EWN') [EUROPE]: p=0.0388, HL=9.2, range=0.146
+2025-12-07 23:33:44,291 - INFO -   4. ('EWL', 'EWN') [EUROPE]: p=0.0013, HL=4.0, range=0.112
+2025-12-07 23:33:44,291 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0033, HL=4.4, range=0.076
+2025-12-07 23:33:44,291 - INFO - Pair selection: 0.66s
+2025-12-07 23:33:44,324 - INFO - [DRIFT DETECTED] EWU_EWL Day 163: p-value=0.6261 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:44,341 - INFO - Pairs: 5, Trades: 9, PnL: $703.63
+2025-12-07 23:33:44,341 - INFO - Exit reasons: {'convergence': 5, 'max_holding': 3, 'stop_loss_time': 1}
+2025-12-07 23:33:44,341 - INFO - ============================================================
+2025-12-07 23:33:44,341 - INFO - Year 2011: Formation 2010
+2025-12-07 23:33:44,341 - INFO - ============================================================
+2025-12-07 23:33:44,344 - INFO - Selecting pairs from 117 tickers
+2025-12-07 23:33:44,471 - INFO - Pairs with corr 0.75-0.95: 60
+2025-12-07 23:33:44,627 - INFO - Cointegrated pairs: 8
+2025-12-07 23:33:44,627 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:44,749 - INFO - After rolling consistency: 6 pairs (removed 2)
+2025-12-07 23:33:44,749 - INFO - Selected 6 pairs
+2025-12-07 23:33:44,749 - INFO -   1. ('EWT', 'EWY') [ASIA_DEV]: p=0.0160, HL=7.3, range=0.116
+2025-12-07 23:33:44,749 - INFO -   2. ('KBE', 'KRE') [FINANCIALS]: p=0.0087, HL=6.1, range=0.098
+2025-12-07 23:33:44,749 - INFO -   3. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0116, HL=5.8, range=0.049
+2025-12-07 23:33:44,749 - INFO -   4. ('VGK', 'EWU') [EUROPE]: p=0.0429, HL=5.3, range=0.060
+2025-12-07 23:33:44,749 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0001, HL=2.1, range=0.020
+2025-12-07 23:33:44,749 - INFO - Pair selection: 0.40s
+2025-12-07 23:33:44,797 - INFO - Pairs: 6, Trades: 3, PnL: $-414.03
+2025-12-07 23:33:44,797 - INFO - Exit reasons: {'stop_loss_time': 2, 'convergence': 1}
+2025-12-07 23:33:44,797 - INFO - ============================================================
+2025-12-07 23:33:44,797 - INFO - Year 2012: Formation 2011
+2025-12-07 23:33:44,797 - INFO - ============================================================
+2025-12-07 23:33:44,797 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:44,931 - INFO - Pairs with corr 0.75-0.95: 52
+2025-12-07 23:33:45,070 - INFO - Cointegrated pairs: 5
+2025-12-07 23:33:45,070 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:45,138 - INFO - After rolling consistency: 2 pairs (removed 3)
+2025-12-07 23:33:45,138 - INFO - Selected 2 pairs
+2025-12-07 23:33:45,139 - INFO -   1. ('EWP', 'EWN') [EUROPE]: p=0.0025, HL=5.9, range=0.152
+2025-12-07 23:33:45,139 - INFO -   2. ('VCIT', 'IGIB') [BONDS_CORP]: p=0.0043, HL=2.2, range=0.021
+2025-12-07 23:33:45,139 - INFO - Pair selection: 0.34s
+2025-12-07 23:33:45,140 - WARNING - Only 2 pairs selected (min: 3), skipping 2012
+2025-12-07 23:33:45,140 - INFO - ============================================================
+2025-12-07 23:33:45,140 - INFO - Year 2013: Formation 2012
+2025-12-07 23:33:45,140 - INFO - ============================================================
+2025-12-07 23:33:45,140 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:45,257 - INFO - Pairs with corr 0.75-0.95: 70
+2025-12-07 23:33:45,426 - INFO - Cointegrated pairs: 4
+2025-12-07 23:33:45,426 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:45,487 - INFO - After rolling consistency: 1 pairs (removed 3)
+2025-12-07 23:33:45,487 - INFO - Selected 1 pairs
+2025-12-07 23:33:45,487 - INFO -   1. ('EWI', 'EWP') [EUROPE]: p=0.0475, HL=9.0, range=0.162
+2025-12-07 23:33:45,487 - INFO - Pair selection: 0.35s
+2025-12-07 23:33:45,489 - WARNING - Only 1 pairs selected (min: 3), skipping 2013
+2025-12-07 23:33:45,489 - INFO - ============================================================
+2025-12-07 23:33:45,489 - INFO - Year 2014: Formation 2013
+2025-12-07 23:33:45,489 - INFO - ============================================================
+2025-12-07 23:33:45,490 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:45,593 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:33:45,778 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:45,778 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:45,805 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:33:45,805 - INFO - Selected 1 pairs
+2025-12-07 23:33:45,805 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0230, HL=8.8, range=0.090
+2025-12-07 23:33:45,805 - INFO - Pair selection: 0.31s
+2025-12-07 23:33:45,806 - WARNING - Only 1 pairs selected (min: 3), skipping 2014
+2025-12-07 23:33:45,806 - INFO - ============================================================
+2025-12-07 23:33:45,806 - INFO - Year 2015: Formation 2014
+2025-12-07 23:33:45,806 - INFO - ============================================================
+2025-12-07 23:33:45,807 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:45,950 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:46,122 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:46,122 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:46,157 - INFO - After rolling consistency: 0 pairs (removed 3)
+2025-12-07 23:33:46,157 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:33:46,157 - INFO - Pair selection: 0.35s
+2025-12-07 23:33:46,157 - WARNING - No pairs selected for 2015
+2025-12-07 23:33:46,157 - INFO - ============================================================
+2025-12-07 23:33:46,157 - INFO - Year 2016: Formation 2015
+2025-12-07 23:33:46,157 - INFO - ============================================================
+2025-12-07 23:33:46,159 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:46,293 - INFO - Pairs with corr 0.75-0.95: 62
+2025-12-07 23:33:46,568 - INFO - Cointegrated pairs: 14
+2025-12-07 23:33:46,568 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:46,747 - INFO - After rolling consistency: 6 pairs (removed 8)
+2025-12-07 23:33:46,747 - INFO - Selected 4 pairs
+2025-12-07 23:33:46,747 - INFO -   1. ('VGK', 'EWP') [EUROPE]: p=0.0045, HL=8.4, range=0.111
+2025-12-07 23:33:46,747 - INFO -   2. ('FEZ', 'EWP') [EUROPE]: p=0.0164, HL=8.4, range=0.107
+2025-12-07 23:33:46,747 - INFO -   3. ('FEZ', 'EWU') [EUROPE]: p=0.0139, HL=6.1, range=0.090
+2025-12-07 23:33:46,747 - INFO -   4. ('EZU', 'EWU') [EUROPE]: p=0.0296, HL=7.3, range=0.091
+2025-12-07 23:33:46,747 - INFO - Pair selection: 0.59s
+2025-12-07 23:33:46,769 - INFO - [DRIFT DETECTED] EZU_EWU Day 142: p-value=0.3045 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:46,776 - INFO - [DRIFT DETECTED] EZU_EWU Day 166: p-value=0.1649 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:46,791 - INFO - Pairs: 4, Trades: 5, PnL: $-5.93
+2025-12-07 23:33:46,791 - INFO - Exit reasons: {'max_holding': 2, 'cointegration_drift': 2, 'convergence': 1}
+2025-12-07 23:33:46,791 - INFO - ============================================================
+2025-12-07 23:33:46,791 - INFO - Year 2017: Formation 2016
+2025-12-07 23:33:46,791 - INFO - ============================================================
+2025-12-07 23:33:46,792 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:46,912 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:47,123 - INFO - Cointegrated pairs: 9
+2025-12-07 23:33:47,123 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:47,258 - INFO - After rolling consistency: 6 pairs (removed 3)
+2025-12-07 23:33:47,258 - INFO - Selected 5 pairs
+2025-12-07 23:33:47,258 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0002, HL=5.1, range=0.090
+2025-12-07 23:33:47,258 - INFO -   2. ('EWH', 'EWY') [ASIA_DEV]: p=0.0195, HL=7.9, range=0.117
+2025-12-07 23:33:47,258 - INFO -   3. ('EWU', 'EWN') [EUROPE]: p=0.0022, HL=6.1, range=0.095
+2025-12-07 23:33:47,258 - INFO -   4. ('SCHV', 'DVY') [US_VALUE]: p=0.0443, HL=11.4, range=0.068
+2025-12-07 23:33:47,258 - INFO -   5. ('DVY', 'VYM') [US_VALUE]: p=0.0092, HL=7.5, range=0.050
+2025-12-07 23:33:47,259 - INFO - Pair selection: 0.47s
+2025-12-07 23:33:47,300 - INFO - Pairs: 5, Trades: 7, PnL: $-2.27
+2025-12-07 23:33:47,301 - INFO - Exit reasons: {'max_holding': 3, 'regime_break': 3, 'period_end': 1}
+2025-12-07 23:33:47,301 - INFO - ============================================================
+2025-12-07 23:33:47,301 - INFO - Year 2018: Formation 2017
+2025-12-07 23:33:47,301 - INFO - ============================================================
+2025-12-07 23:33:47,302 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:47,410 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:47,688 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:47,688 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:47,734 - INFO - After rolling consistency: 2 pairs (removed 1)
+2025-12-07 23:33:47,734 - INFO - Selected 2 pairs
+2025-12-07 23:33:47,734 - INFO -   1. ('VGK', 'EWQ') [EUROPE]: p=0.0301, HL=8.4, range=0.027
+2025-12-07 23:33:47,734 - INFO -   2. ('VFH', 'IAI') [FINANCIALS]: p=0.0163, HL=6.9, range=0.043
+2025-12-07 23:33:47,734 - INFO - Pair selection: 0.43s
+2025-12-07 23:33:47,735 - WARNING - Only 2 pairs selected (min: 3), skipping 2018
+2025-12-07 23:33:47,735 - INFO - ============================================================
+2025-12-07 23:33:47,735 - INFO - Year 2019: Formation 2018
+2025-12-07 23:33:47,735 - INFO - ============================================================
+2025-12-07 23:33:47,736 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:47,856 - INFO - Pairs with corr 0.75-0.95: 67
+2025-12-07 23:33:48,024 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:48,024 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:48,060 - INFO - After rolling consistency: 1 pairs (removed 2)
+2025-12-07 23:33:48,060 - INFO - Selected 1 pairs
+2025-12-07 23:33:48,060 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0072, HL=6.3, range=0.097
+2025-12-07 23:33:48,060 - INFO - Pair selection: 0.32s
+2025-12-07 23:33:48,061 - WARNING - Only 1 pairs selected (min: 3), skipping 2019
+2025-12-07 23:33:48,061 - INFO - ============================================================
+2025-12-07 23:33:48,061 - INFO - Year 2020: Formation 2019
+2025-12-07 23:33:48,061 - INFO - ============================================================
+2025-12-07 23:33:48,061 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:48,168 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:33:48,326 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:48,326 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:48,350 - INFO - After rolling consistency: 0 pairs (removed 2)
+2025-12-07 23:33:48,350 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:33:48,351 - INFO - Pair selection: 0.29s
+2025-12-07 23:33:48,351 - WARNING - No pairs selected for 2020
+2025-12-07 23:33:48,351 - INFO - ============================================================
+2025-12-07 23:33:48,351 - INFO - Year 2021: Formation 2020
+2025-12-07 23:33:48,351 - INFO - ============================================================
+2025-12-07 23:33:48,351 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:48,469 - INFO - Pairs with corr 0.75-0.95: 71
+2025-12-07 23:33:48,643 - INFO - Cointegrated pairs: 6
+2025-12-07 23:33:48,643 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:48,721 - INFO - After rolling consistency: 3 pairs (removed 3)
+2025-12-07 23:33:48,721 - INFO - Selected 3 pairs
+2025-12-07 23:33:48,721 - INFO -   1. ('LQD', 'IGIB') [BONDS_CORP]: p=0.0013, HL=5.8, range=0.091
+2025-12-07 23:33:48,721 - INFO -   2. ('EWG', 'EWL') [EUROPE]: p=0.0008, HL=4.2, range=0.140
+2025-12-07 23:33:48,723 - INFO -   3. ('EWL', 'EWN') [EUROPE]: p=0.0231, HL=4.4, range=0.108
+2025-12-07 23:33:48,723 - INFO - Pair selection: 0.37s
+2025-12-07 23:33:48,756 - INFO - Pairs: 3, Trades: 0, PnL: $0.00
+2025-12-07 23:33:48,756 - INFO - Exit reasons: {}
+2025-12-07 23:33:48,756 - INFO - ============================================================
+2025-12-07 23:33:48,756 - INFO - Year 2022: Formation 2021
+2025-12-07 23:33:48,756 - INFO - ============================================================
+2025-12-07 23:33:48,757 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:48,874 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:33:49,062 - INFO - Cointegrated pairs: 4
+2025-12-07 23:33:49,062 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:49,109 - INFO - After rolling consistency: 2 pairs (removed 2)
+2025-12-07 23:33:49,109 - INFO - Selected 2 pairs
+2025-12-07 23:33:49,110 - INFO -   1. ('EWU', 'EWI') [EUROPE]: p=0.0142, HL=6.3, range=0.075
+2025-12-07 23:33:49,110 - INFO -   2. ('EWU', 'EWQ') [EUROPE]: p=0.0010, HL=4.7, range=0.053
+2025-12-07 23:33:49,110 - INFO - Pair selection: 0.35s
+2025-12-07 23:33:49,111 - WARNING - Only 2 pairs selected (min: 3), skipping 2022
+2025-12-07 23:33:49,111 - INFO - ============================================================
+2025-12-07 23:33:49,111 - INFO - Year 2023: Formation 2022
+2025-12-07 23:33:49,111 - INFO - ============================================================
+2025-12-07 23:33:49,111 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:49,224 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:33:49,387 - INFO - Cointegrated pairs: 6
+2025-12-07 23:33:49,387 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:49,460 - INFO - After rolling consistency: 2 pairs (removed 4)
+2025-12-07 23:33:49,460 - INFO - Selected 2 pairs
+2025-12-07 23:33:49,460 - INFO -   1. ('VGK', 'EWU') [EUROPE]: p=0.0033, HL=8.9, range=0.139
+2025-12-07 23:33:49,460 - INFO -   2. ('EWU', 'EWN') [EUROPE]: p=0.0239, HL=9.9, range=0.144
+2025-12-07 23:33:49,460 - INFO - Pair selection: 0.35s
+2025-12-07 23:33:49,461 - WARNING - Only 2 pairs selected (min: 3), skipping 2023
+2025-12-07 23:33:49,461 - INFO - ============================================================
+2025-12-07 23:33:49,461 - INFO - Year 2024: Formation 2023
+2025-12-07 23:33:49,461 - INFO - ============================================================
+2025-12-07 23:33:49,464 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:49,578 - INFO - Pairs with corr 0.75-0.95: 75
+2025-12-07 23:33:49,765 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:49,765 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:49,791 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:33:49,791 - INFO - Selected 1 pairs
+2025-12-07 23:33:49,791 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0082, HL=5.5, range=0.055
+2025-12-07 23:33:49,791 - INFO - Pair selection: 0.33s
+2025-12-07 23:33:49,792 - WARNING - Only 1 pairs selected (min: 3), skipping 2024
+2025-12-07 23:33:49,795 - INFO - Backtest completed in 6.2 seconds
+2025-12-07 23:33:49,797 - ERROR - Error running 252-252_baseline: calculate_performance_metrics() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "i:\Winter-Break-Research\scripts\test_window_sizes.py", line 211, in run_window_size_experiment
+    metrics = calculate_performance_metrics(trades_df, config.initial_capital)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: calculate_performance_metrics() takes 1 positional argument but 2 were given
+2025-12-07 23:33:49,798 - INFO - 
+======================================================================
+2025-12-07 23:33:49,798 - INFO - TESTING: 252-126_gatev
+2025-12-07 23:33:49,798 - INFO - Formation: 252 days | Trading: 126 days
+2025-12-07 23:33:49,798 - INFO - Hedge Update: 42 days
+2025-12-07 23:33:49,798 - INFO - ======================================================================
+
+2025-12-07 23:33:49,798 - INFO - ============================================================
+2025-12-07 23:33:49,798 - INFO - Year 2010: Formation 2009
+2025-12-07 23:33:49,798 - INFO - ============================================================
+2025-12-07 23:33:49,800 - INFO - Selecting pairs from 112 tickers
+2025-12-07 23:33:49,900 - INFO - Pairs with corr 0.75-0.95: 57
+2025-12-07 23:33:50,087 - INFO - Cointegrated pairs: 19
+2025-12-07 23:33:50,087 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:50,334 - INFO - After rolling consistency: 8 pairs (removed 11)
+2025-12-07 23:33:50,334 - INFO - Selected 5 pairs
+2025-12-07 23:33:50,334 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0103, HL=13.2, range=0.228
+2025-12-07 23:33:50,334 - INFO -   2. ('EWU', 'EWL') [EUROPE]: p=0.0069, HL=6.9, range=0.162
+2025-12-07 23:33:50,334 - INFO -   3. ('EWG', 'EWN') [EUROPE]: p=0.0388, HL=9.2, range=0.146
+2025-12-07 23:33:50,334 - INFO -   4. ('EWL', 'EWN') [EUROPE]: p=0.0013, HL=4.0, range=0.112
+2025-12-07 23:33:50,334 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0033, HL=4.4, range=0.076
+2025-12-07 23:33:50,334 - INFO - Pair selection: 0.53s
+2025-12-07 23:33:50,364 - INFO - [DRIFT DETECTED] EWU_EWL Day 163: p-value=0.6261 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:50,390 - INFO - Pairs: 5, Trades: 11, PnL: $673.70
+2025-12-07 23:33:50,391 - INFO - Exit reasons: {'convergence': 6, 'max_holding': 3, 'stop_loss_time': 2}
+2025-12-07 23:33:50,391 - INFO - ============================================================
+2025-12-07 23:33:50,391 - INFO - Year 2011: Formation 2010
+2025-12-07 23:33:50,391 - INFO - ============================================================
+2025-12-07 23:33:50,392 - INFO - Selecting pairs from 117 tickers
+2025-12-07 23:33:50,505 - INFO - Pairs with corr 0.75-0.95: 60
+2025-12-07 23:33:50,694 - INFO - Cointegrated pairs: 8
+2025-12-07 23:33:50,694 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:50,823 - INFO - After rolling consistency: 6 pairs (removed 2)
+2025-12-07 23:33:50,823 - INFO - Selected 6 pairs
+2025-12-07 23:33:50,823 - INFO -   1. ('EWT', 'EWY') [ASIA_DEV]: p=0.0160, HL=7.3, range=0.116
+2025-12-07 23:33:50,823 - INFO -   2. ('KBE', 'KRE') [FINANCIALS]: p=0.0087, HL=6.1, range=0.098
+2025-12-07 23:33:50,823 - INFO -   3. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0116, HL=5.8, range=0.049
+2025-12-07 23:33:50,823 - INFO -   4. ('VGK', 'EWU') [EUROPE]: p=0.0429, HL=5.3, range=0.060
+2025-12-07 23:33:50,823 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0001, HL=2.1, range=0.020
+2025-12-07 23:33:50,823 - INFO - Pair selection: 0.43s
+2025-12-07 23:33:50,887 - INFO - Pairs: 6, Trades: 4, PnL: $-451.64
+2025-12-07 23:33:50,887 - INFO - Exit reasons: {'stop_loss_time': 3, 'convergence': 1}
+2025-12-07 23:33:50,887 - INFO - ============================================================
+2025-12-07 23:33:50,887 - INFO - Year 2012: Formation 2011
+2025-12-07 23:33:50,887 - INFO - ============================================================
+2025-12-07 23:33:50,887 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:51,034 - INFO - Pairs with corr 0.75-0.95: 52
+2025-12-07 23:33:51,322 - INFO - Cointegrated pairs: 5
+2025-12-07 23:33:51,322 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:51,401 - INFO - After rolling consistency: 2 pairs (removed 3)
+2025-12-07 23:33:51,401 - INFO - Selected 2 pairs
+2025-12-07 23:33:51,401 - INFO -   1. ('EWP', 'EWN') [EUROPE]: p=0.0025, HL=5.9, range=0.152
+2025-12-07 23:33:51,401 - INFO -   2. ('VCIT', 'IGIB') [BONDS_CORP]: p=0.0043, HL=2.2, range=0.021
+2025-12-07 23:33:51,401 - INFO - Pair selection: 0.51s
+2025-12-07 23:33:51,402 - WARNING - Only 2 pairs selected (min: 3), skipping 2012
+2025-12-07 23:33:51,402 - INFO - ============================================================
+2025-12-07 23:33:51,402 - INFO - Year 2013: Formation 2012
+2025-12-07 23:33:51,402 - INFO - ============================================================
+2025-12-07 23:33:51,402 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:51,517 - INFO - Pairs with corr 0.75-0.95: 70
+2025-12-07 23:33:51,687 - INFO - Cointegrated pairs: 4
+2025-12-07 23:33:51,687 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:51,733 - INFO - After rolling consistency: 1 pairs (removed 3)
+2025-12-07 23:33:51,734 - INFO - Selected 1 pairs
+2025-12-07 23:33:51,734 - INFO -   1. ('EWI', 'EWP') [EUROPE]: p=0.0475, HL=9.0, range=0.162
+2025-12-07 23:33:51,734 - INFO - Pair selection: 0.33s
+2025-12-07 23:33:51,735 - WARNING - Only 1 pairs selected (min: 3), skipping 2013
+2025-12-07 23:33:51,735 - INFO - ============================================================
+2025-12-07 23:33:51,735 - INFO - Year 2014: Formation 2013
+2025-12-07 23:33:51,735 - INFO - ============================================================
+2025-12-07 23:33:51,735 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:51,853 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:33:52,070 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:52,070 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:52,103 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:33:52,103 - INFO - Selected 1 pairs
+2025-12-07 23:33:52,103 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0230, HL=8.8, range=0.090
+2025-12-07 23:33:52,103 - INFO - Pair selection: 0.37s
+2025-12-07 23:33:52,104 - WARNING - Only 1 pairs selected (min: 3), skipping 2014
+2025-12-07 23:33:52,104 - INFO - ============================================================
+2025-12-07 23:33:52,104 - INFO - Year 2015: Formation 2014
+2025-12-07 23:33:52,104 - INFO - ============================================================
+2025-12-07 23:33:52,104 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:52,222 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:52,445 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:52,445 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:52,474 - INFO - After rolling consistency: 0 pairs (removed 3)
+2025-12-07 23:33:52,474 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:33:52,474 - INFO - Pair selection: 0.37s
+2025-12-07 23:33:52,474 - WARNING - No pairs selected for 2015
+2025-12-07 23:33:52,474 - INFO - ============================================================
+2025-12-07 23:33:52,474 - INFO - Year 2016: Formation 2015
+2025-12-07 23:33:52,474 - INFO - ============================================================
+2025-12-07 23:33:52,475 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:52,612 - INFO - Pairs with corr 0.75-0.95: 62
+2025-12-07 23:33:52,814 - INFO - Cointegrated pairs: 14
+2025-12-07 23:33:52,814 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:53,026 - INFO - After rolling consistency: 6 pairs (removed 8)
+2025-12-07 23:33:53,026 - INFO - Selected 4 pairs
+2025-12-07 23:33:53,026 - INFO -   1. ('VGK', 'EWP') [EUROPE]: p=0.0045, HL=8.4, range=0.111
+2025-12-07 23:33:53,026 - INFO -   2. ('FEZ', 'EWP') [EUROPE]: p=0.0164, HL=8.4, range=0.107
+2025-12-07 23:33:53,026 - INFO -   3. ('FEZ', 'EWU') [EUROPE]: p=0.0139, HL=6.1, range=0.090
+2025-12-07 23:33:53,026 - INFO -   4. ('EZU', 'EWU') [EUROPE]: p=0.0296, HL=7.3, range=0.091
+2025-12-07 23:33:53,026 - INFO - Pair selection: 0.55s
+2025-12-07 23:33:53,058 - INFO - [DRIFT DETECTED] EZU_EWU Day 142: p-value=0.3045 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:53,072 - INFO - [DRIFT DETECTED] EZU_EWU Day 166: p-value=0.1649 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:53,131 - INFO - Pairs: 4, Trades: 6, PnL: $-53.12
+2025-12-07 23:33:53,131 - INFO - Exit reasons: {'max_holding': 2, 'cointegration_drift': 2, 'convergence': 1, 'stop_loss_time': 1}
+2025-12-07 23:33:53,131 - INFO - ============================================================
+2025-12-07 23:33:53,131 - INFO - Year 2017: Formation 2016
+2025-12-07 23:33:53,131 - INFO - ============================================================
+2025-12-07 23:33:53,133 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:53,257 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:53,446 - INFO - Cointegrated pairs: 9
+2025-12-07 23:33:53,447 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:53,579 - INFO - After rolling consistency: 6 pairs (removed 3)
+2025-12-07 23:33:53,580 - INFO - Selected 5 pairs
+2025-12-07 23:33:53,580 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0002, HL=5.1, range=0.090
+2025-12-07 23:33:53,580 - INFO -   2. ('EWH', 'EWY') [ASIA_DEV]: p=0.0195, HL=7.9, range=0.117
+2025-12-07 23:33:53,580 - INFO -   3. ('EWU', 'EWN') [EUROPE]: p=0.0022, HL=6.1, range=0.095
+2025-12-07 23:33:53,580 - INFO -   4. ('SCHV', 'DVY') [US_VALUE]: p=0.0443, HL=11.4, range=0.068
+2025-12-07 23:33:53,580 - INFO -   5. ('DVY', 'VYM') [US_VALUE]: p=0.0092, HL=7.5, range=0.050
+2025-12-07 23:33:53,580 - INFO - Pair selection: 0.45s
+2025-12-07 23:33:53,654 - INFO - Pairs: 5, Trades: 4, PnL: $157.21
+2025-12-07 23:33:53,654 - INFO - Exit reasons: {'max_holding': 2, 'stop_loss_time': 1, 'convergence': 1}
+2025-12-07 23:33:53,654 - INFO - ============================================================
+2025-12-07 23:33:53,654 - INFO - Year 2018: Formation 2017
+2025-12-07 23:33:53,654 - INFO - ============================================================
+2025-12-07 23:33:53,655 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:53,767 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:53,937 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:53,937 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:53,980 - INFO - After rolling consistency: 2 pairs (removed 1)
+2025-12-07 23:33:53,980 - INFO - Selected 2 pairs
+2025-12-07 23:33:53,980 - INFO -   1. ('VGK', 'EWQ') [EUROPE]: p=0.0301, HL=8.4, range=0.027
+2025-12-07 23:33:53,980 - INFO -   2. ('VFH', 'IAI') [FINANCIALS]: p=0.0163, HL=6.9, range=0.043
+2025-12-07 23:33:53,980 - INFO - Pair selection: 0.33s
+2025-12-07 23:33:53,981 - WARNING - Only 2 pairs selected (min: 3), skipping 2018
+2025-12-07 23:33:53,981 - INFO - ============================================================
+2025-12-07 23:33:53,981 - INFO - Year 2019: Formation 2018
+2025-12-07 23:33:53,981 - INFO - ============================================================
+2025-12-07 23:33:53,982 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:54,097 - INFO - Pairs with corr 0.75-0.95: 67
+2025-12-07 23:33:54,272 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:54,272 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:54,304 - INFO - After rolling consistency: 1 pairs (removed 2)
+2025-12-07 23:33:54,304 - INFO - Selected 1 pairs
+2025-12-07 23:33:54,304 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0072, HL=6.3, range=0.097
+2025-12-07 23:33:54,304 - INFO - Pair selection: 0.32s
+2025-12-07 23:33:54,305 - WARNING - Only 1 pairs selected (min: 3), skipping 2019
+2025-12-07 23:33:54,305 - INFO - ============================================================
+2025-12-07 23:33:54,305 - INFO - Year 2020: Formation 2019
+2025-12-07 23:33:54,305 - INFO - ============================================================
+2025-12-07 23:33:54,306 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:54,422 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:33:54,577 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:54,577 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:54,604 - INFO - After rolling consistency: 0 pairs (removed 2)
+2025-12-07 23:33:54,604 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:33:54,604 - INFO - Pair selection: 0.30s
+2025-12-07 23:33:54,604 - WARNING - No pairs selected for 2020
+2025-12-07 23:33:54,604 - INFO - ============================================================
+2025-12-07 23:33:54,604 - INFO - Year 2021: Formation 2020
+2025-12-07 23:33:54,604 - INFO - ============================================================
+2025-12-07 23:33:54,605 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:54,737 - INFO - Pairs with corr 0.75-0.95: 71
+2025-12-07 23:33:54,962 - INFO - Cointegrated pairs: 6
+2025-12-07 23:33:54,962 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:55,036 - INFO - After rolling consistency: 3 pairs (removed 3)
+2025-12-07 23:33:55,037 - INFO - Selected 3 pairs
+2025-12-07 23:33:55,037 - INFO -   1. ('LQD', 'IGIB') [BONDS_CORP]: p=0.0013, HL=5.8, range=0.091
+2025-12-07 23:33:55,037 - INFO -   2. ('EWG', 'EWL') [EUROPE]: p=0.0008, HL=4.2, range=0.140
+2025-12-07 23:33:55,037 - INFO -   3. ('EWL', 'EWN') [EUROPE]: p=0.0231, HL=4.4, range=0.108
+2025-12-07 23:33:55,037 - INFO - Pair selection: 0.43s
+2025-12-07 23:33:55,068 - INFO - Pairs: 3, Trades: 1, PnL: $-54.47
+2025-12-07 23:33:55,068 - INFO - Exit reasons: {'max_holding': 1}
+2025-12-07 23:33:55,068 - INFO - ============================================================
+2025-12-07 23:33:55,068 - INFO - Year 2022: Formation 2021
+2025-12-07 23:33:55,068 - INFO - ============================================================
+2025-12-07 23:33:55,069 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:55,208 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:33:55,443 - INFO - Cointegrated pairs: 4
+2025-12-07 23:33:55,443 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:55,518 - INFO - After rolling consistency: 2 pairs (removed 2)
+2025-12-07 23:33:55,518 - INFO - Selected 2 pairs
+2025-12-07 23:33:55,518 - INFO -   1. ('EWU', 'EWI') [EUROPE]: p=0.0142, HL=6.3, range=0.075
+2025-12-07 23:33:55,518 - INFO -   2. ('EWU', 'EWQ') [EUROPE]: p=0.0010, HL=4.7, range=0.053
+2025-12-07 23:33:55,518 - INFO - Pair selection: 0.45s
+2025-12-07 23:33:55,520 - WARNING - Only 2 pairs selected (min: 3), skipping 2022
+2025-12-07 23:33:55,520 - INFO - ============================================================
+2025-12-07 23:33:55,520 - INFO - Year 2023: Formation 2022
+2025-12-07 23:33:55,520 - INFO - ============================================================
+2025-12-07 23:33:55,520 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:55,642 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:33:55,829 - INFO - Cointegrated pairs: 6
+2025-12-07 23:33:55,829 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:55,904 - INFO - After rolling consistency: 2 pairs (removed 4)
+2025-12-07 23:33:55,904 - INFO - Selected 2 pairs
+2025-12-07 23:33:55,904 - INFO -   1. ('VGK', 'EWU') [EUROPE]: p=0.0033, HL=8.9, range=0.139
+2025-12-07 23:33:55,904 - INFO -   2. ('EWU', 'EWN') [EUROPE]: p=0.0239, HL=9.9, range=0.144
+2025-12-07 23:33:55,904 - INFO - Pair selection: 0.38s
+2025-12-07 23:33:55,907 - WARNING - Only 2 pairs selected (min: 3), skipping 2023
+2025-12-07 23:33:55,907 - INFO - ============================================================
+2025-12-07 23:33:55,907 - INFO - Year 2024: Formation 2023
+2025-12-07 23:33:55,907 - INFO - ============================================================
+2025-12-07 23:33:55,908 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:56,033 - INFO - Pairs with corr 0.75-0.95: 75
+2025-12-07 23:33:56,234 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:56,234 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:56,264 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:33:56,264 - INFO - Selected 1 pairs
+2025-12-07 23:33:56,265 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0082, HL=5.5, range=0.055
+2025-12-07 23:33:56,265 - INFO - Pair selection: 0.36s
+2025-12-07 23:33:56,266 - WARNING - Only 1 pairs selected (min: 3), skipping 2024
+2025-12-07 23:33:56,266 - INFO - Backtest completed in 6.5 seconds
+2025-12-07 23:33:56,267 - ERROR - Error running 252-126_gatev: calculate_performance_metrics() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "i:\Winter-Break-Research\scripts\test_window_sizes.py", line 211, in run_window_size_experiment
+    metrics = calculate_performance_metrics(trades_df, config.initial_capital)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: calculate_performance_metrics() takes 1 positional argument but 2 were given
+2025-12-07 23:33:56,267 - INFO - 
+======================================================================
+2025-12-07 23:33:56,267 - INFO - TESTING: 120-60_moderate
+2025-12-07 23:33:56,267 - INFO - Formation: 120 days | Trading: 60 days
+2025-12-07 23:33:56,267 - INFO - Hedge Update: 30 days
+2025-12-07 23:33:56,268 - INFO - ======================================================================
+
+2025-12-07 23:33:56,268 - INFO - ============================================================
+2025-12-07 23:33:56,268 - INFO - Year 2010: Formation 2009
+2025-12-07 23:33:56,268 - INFO - ============================================================
+2025-12-07 23:33:56,269 - INFO - Selecting pairs from 112 tickers
+2025-12-07 23:33:56,391 - INFO - Pairs with corr 0.75-0.95: 57
+2025-12-07 23:33:56,585 - INFO - Cointegrated pairs: 19
+2025-12-07 23:33:56,585 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:56,865 - INFO - After rolling consistency: 8 pairs (removed 11)
+2025-12-07 23:33:56,865 - INFO - Selected 5 pairs
+2025-12-07 23:33:56,865 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0103, HL=13.2, range=0.228
+2025-12-07 23:33:56,865 - INFO -   2. ('EWU', 'EWL') [EUROPE]: p=0.0069, HL=6.9, range=0.162
+2025-12-07 23:33:56,865 - INFO -   3. ('EWG', 'EWN') [EUROPE]: p=0.0388, HL=9.2, range=0.146
+2025-12-07 23:33:56,865 - INFO -   4. ('EWL', 'EWN') [EUROPE]: p=0.0013, HL=4.0, range=0.112
+2025-12-07 23:33:56,865 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0033, HL=4.4, range=0.076
+2025-12-07 23:33:56,866 - INFO - Pair selection: 0.60s
+2025-12-07 23:33:56,906 - INFO - [DRIFT DETECTED] EWU_EWL Day 163: p-value=0.6261 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:56,963 - INFO - Pairs: 5, Trades: 13, PnL: $733.95
+2025-12-07 23:33:56,963 - INFO - Exit reasons: {'convergence': 5, 'stop_loss_time': 5, 'max_holding': 3}
+2025-12-07 23:33:56,963 - INFO - ============================================================
+2025-12-07 23:33:56,963 - INFO - Year 2011: Formation 2010
+2025-12-07 23:33:56,963 - INFO - ============================================================
+2025-12-07 23:33:56,965 - INFO - Selecting pairs from 117 tickers
+2025-12-07 23:33:57,109 - INFO - Pairs with corr 0.75-0.95: 60
+2025-12-07 23:33:57,285 - INFO - Cointegrated pairs: 8
+2025-12-07 23:33:57,285 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:57,403 - INFO - After rolling consistency: 6 pairs (removed 2)
+2025-12-07 23:33:57,403 - INFO - Selected 6 pairs
+2025-12-07 23:33:57,403 - INFO -   1. ('EWT', 'EWY') [ASIA_DEV]: p=0.0160, HL=7.3, range=0.116
+2025-12-07 23:33:57,403 - INFO -   2. ('KBE', 'KRE') [FINANCIALS]: p=0.0087, HL=6.1, range=0.098
+2025-12-07 23:33:57,403 - INFO -   3. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0116, HL=5.8, range=0.049
+2025-12-07 23:33:57,403 - INFO -   4. ('VGK', 'EWU') [EUROPE]: p=0.0429, HL=5.3, range=0.060
+2025-12-07 23:33:57,403 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0001, HL=2.1, range=0.020
+2025-12-07 23:33:57,403 - INFO - Pair selection: 0.44s
+2025-12-07 23:33:57,485 - INFO - Pairs: 6, Trades: 21, PnL: $-968.15
+2025-12-07 23:33:57,485 - INFO - Exit reasons: {'stop_loss_time': 10, 'max_holding': 3, 'convergence': 7, 'period_end': 1}
+2025-12-07 23:33:57,485 - INFO - ============================================================
+2025-12-07 23:33:57,485 - INFO - Year 2012: Formation 2011
+2025-12-07 23:33:57,485 - INFO - ============================================================
+2025-12-07 23:33:57,486 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:57,602 - INFO - Pairs with corr 0.75-0.95: 52
+2025-12-07 23:33:57,747 - INFO - Cointegrated pairs: 5
+2025-12-07 23:33:57,747 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:57,817 - INFO - After rolling consistency: 2 pairs (removed 3)
+2025-12-07 23:33:57,817 - INFO - Selected 2 pairs
+2025-12-07 23:33:57,817 - INFO -   1. ('EWP', 'EWN') [EUROPE]: p=0.0025, HL=5.9, range=0.152
+2025-12-07 23:33:57,817 - INFO -   2. ('VCIT', 'IGIB') [BONDS_CORP]: p=0.0043, HL=2.2, range=0.021
+2025-12-07 23:33:57,817 - INFO - Pair selection: 0.33s
+2025-12-07 23:33:57,818 - WARNING - Only 2 pairs selected (min: 3), skipping 2012
+2025-12-07 23:33:57,818 - INFO - ============================================================
+2025-12-07 23:33:57,818 - INFO - Year 2013: Formation 2012
+2025-12-07 23:33:57,818 - INFO - ============================================================
+2025-12-07 23:33:57,819 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:57,932 - INFO - Pairs with corr 0.75-0.95: 70
+2025-12-07 23:33:58,115 - INFO - Cointegrated pairs: 4
+2025-12-07 23:33:58,115 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:58,165 - INFO - After rolling consistency: 1 pairs (removed 3)
+2025-12-07 23:33:58,165 - INFO - Selected 1 pairs
+2025-12-07 23:33:58,165 - INFO -   1. ('EWI', 'EWP') [EUROPE]: p=0.0475, HL=9.0, range=0.162
+2025-12-07 23:33:58,165 - INFO - Pair selection: 0.35s
+2025-12-07 23:33:58,166 - WARNING - Only 1 pairs selected (min: 3), skipping 2013
+2025-12-07 23:33:58,166 - INFO - ============================================================
+2025-12-07 23:33:58,166 - INFO - Year 2014: Formation 2013
+2025-12-07 23:33:58,166 - INFO - ============================================================
+2025-12-07 23:33:58,167 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:58,294 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:33:58,747 - INFO - Cointegrated pairs: 2
+2025-12-07 23:33:58,747 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:58,823 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:33:58,823 - INFO - Selected 1 pairs
+2025-12-07 23:33:58,823 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0230, HL=8.8, range=0.090
+2025-12-07 23:33:58,823 - INFO - Pair selection: 0.66s
+2025-12-07 23:33:58,825 - WARNING - Only 1 pairs selected (min: 3), skipping 2014
+2025-12-07 23:33:58,825 - INFO - ============================================================
+2025-12-07 23:33:58,825 - INFO - Year 2015: Formation 2014
+2025-12-07 23:33:58,825 - INFO - ============================================================
+2025-12-07 23:33:58,826 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:59,004 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:33:59,172 - INFO - Cointegrated pairs: 3
+2025-12-07 23:33:59,172 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:59,199 - INFO - After rolling consistency: 0 pairs (removed 3)
+2025-12-07 23:33:59,199 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:33:59,199 - INFO - Pair selection: 0.37s
+2025-12-07 23:33:59,200 - WARNING - No pairs selected for 2015
+2025-12-07 23:33:59,200 - INFO - ============================================================
+2025-12-07 23:33:59,200 - INFO - Year 2016: Formation 2015
+2025-12-07 23:33:59,200 - INFO - ============================================================
+2025-12-07 23:33:59,200 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:59,316 - INFO - Pairs with corr 0.75-0.95: 62
+2025-12-07 23:33:59,497 - INFO - Cointegrated pairs: 14
+2025-12-07 23:33:59,497 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:33:59,750 - INFO - After rolling consistency: 6 pairs (removed 8)
+2025-12-07 23:33:59,750 - INFO - Selected 4 pairs
+2025-12-07 23:33:59,750 - INFO -   1. ('VGK', 'EWP') [EUROPE]: p=0.0045, HL=8.4, range=0.111
+2025-12-07 23:33:59,750 - INFO -   2. ('FEZ', 'EWP') [EUROPE]: p=0.0164, HL=8.4, range=0.107
+2025-12-07 23:33:59,750 - INFO -   3. ('FEZ', 'EWU') [EUROPE]: p=0.0139, HL=6.1, range=0.090
+2025-12-07 23:33:59,750 - INFO -   4. ('EZU', 'EWU') [EUROPE]: p=0.0296, HL=7.3, range=0.091
+2025-12-07 23:33:59,750 - INFO - Pair selection: 0.55s
+2025-12-07 23:33:59,779 - INFO - [DRIFT DETECTED] EZU_EWU Day 142: p-value=0.3045 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:59,796 - INFO - [DRIFT DETECTED] EZU_EWU Day 166: p-value=0.1649 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:59,801 - INFO - [DRIFT DETECTED] VGK_EWP Day 168: p-value=0.4655 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:59,819 - INFO - [DRIFT DETECTED] VGK_EWP Day 195: p-value=0.3912 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:59,834 - INFO - [DRIFT DETECTED] VGK_EWP Day 230: p-value=0.7226 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:33:59,850 - INFO - Pairs: 4, Trades: 8, PnL: $-22.38
+2025-12-07 23:33:59,850 - INFO - Exit reasons: {'max_holding': 1, 'cointegration_drift': 5, 'convergence': 1, 'stop_loss_time': 1}
+2025-12-07 23:33:59,850 - INFO - ============================================================
+2025-12-07 23:33:59,850 - INFO - Year 2017: Formation 2016
+2025-12-07 23:33:59,850 - INFO - ============================================================
+2025-12-07 23:33:59,851 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:33:59,965 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:00,168 - INFO - Cointegrated pairs: 9
+2025-12-07 23:34:00,168 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:00,299 - INFO - After rolling consistency: 6 pairs (removed 3)
+2025-12-07 23:34:00,299 - INFO - Selected 5 pairs
+2025-12-07 23:34:00,299 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0002, HL=5.1, range=0.090
+2025-12-07 23:34:00,299 - INFO -   2. ('EWH', 'EWY') [ASIA_DEV]: p=0.0195, HL=7.9, range=0.117
+2025-12-07 23:34:00,299 - INFO -   3. ('EWU', 'EWN') [EUROPE]: p=0.0022, HL=6.1, range=0.095
+2025-12-07 23:34:00,299 - INFO -   4. ('SCHV', 'DVY') [US_VALUE]: p=0.0443, HL=11.4, range=0.068
+2025-12-07 23:34:00,299 - INFO -   5. ('DVY', 'VYM') [US_VALUE]: p=0.0092, HL=7.5, range=0.050
+2025-12-07 23:34:00,299 - INFO - Pair selection: 0.45s
+2025-12-07 23:34:00,331 - INFO - [DRIFT DETECTED] EWH_EWY Day 169: p-value=0.9632 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:00,373 - INFO - Pairs: 5, Trades: 10, PnL: $-222.86
+2025-12-07 23:34:00,373 - INFO - Exit reasons: {'stop_loss_time': 4, 'max_holding': 4, 'cointegration_drift': 1, 'convergence': 1}
+2025-12-07 23:34:00,373 - INFO - ============================================================
+2025-12-07 23:34:00,373 - INFO - Year 2018: Formation 2017
+2025-12-07 23:34:00,373 - INFO - ============================================================
+2025-12-07 23:34:00,374 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:00,575 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:00,746 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:00,746 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:00,809 - INFO - After rolling consistency: 2 pairs (removed 1)
+2025-12-07 23:34:00,809 - INFO - Selected 2 pairs
+2025-12-07 23:34:00,809 - INFO -   1. ('VGK', 'EWQ') [EUROPE]: p=0.0301, HL=8.4, range=0.027
+2025-12-07 23:34:00,809 - INFO -   2. ('VFH', 'IAI') [FINANCIALS]: p=0.0163, HL=6.9, range=0.043
+2025-12-07 23:34:00,809 - INFO - Pair selection: 0.44s
+2025-12-07 23:34:00,810 - WARNING - Only 2 pairs selected (min: 3), skipping 2018
+2025-12-07 23:34:00,810 - INFO - ============================================================
+2025-12-07 23:34:00,810 - INFO - Year 2019: Formation 2018
+2025-12-07 23:34:00,810 - INFO - ============================================================
+2025-12-07 23:34:00,810 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:00,925 - INFO - Pairs with corr 0.75-0.95: 67
+2025-12-07 23:34:01,093 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:01,093 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:01,126 - INFO - After rolling consistency: 1 pairs (removed 2)
+2025-12-07 23:34:01,126 - INFO - Selected 1 pairs
+2025-12-07 23:34:01,126 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0072, HL=6.3, range=0.097
+2025-12-07 23:34:01,126 - INFO - Pair selection: 0.32s
+2025-12-07 23:34:01,127 - WARNING - Only 1 pairs selected (min: 3), skipping 2019
+2025-12-07 23:34:01,127 - INFO - ============================================================
+2025-12-07 23:34:01,127 - INFO - Year 2020: Formation 2019
+2025-12-07 23:34:01,127 - INFO - ============================================================
+2025-12-07 23:34:01,128 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:01,240 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:34:01,412 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:01,412 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:01,434 - INFO - After rolling consistency: 0 pairs (removed 2)
+2025-12-07 23:34:01,434 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:34:01,434 - INFO - Pair selection: 0.31s
+2025-12-07 23:34:01,434 - WARNING - No pairs selected for 2020
+2025-12-07 23:34:01,434 - INFO - ============================================================
+2025-12-07 23:34:01,434 - INFO - Year 2021: Formation 2020
+2025-12-07 23:34:01,435 - INFO - ============================================================
+2025-12-07 23:34:01,436 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:01,557 - INFO - Pairs with corr 0.75-0.95: 71
+2025-12-07 23:34:01,730 - INFO - Cointegrated pairs: 6
+2025-12-07 23:34:01,730 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:01,816 - INFO - After rolling consistency: 3 pairs (removed 3)
+2025-12-07 23:34:01,816 - INFO - Selected 3 pairs
+2025-12-07 23:34:01,816 - INFO -   1. ('LQD', 'IGIB') [BONDS_CORP]: p=0.0013, HL=5.8, range=0.091
+2025-12-07 23:34:01,816 - INFO -   2. ('EWG', 'EWL') [EUROPE]: p=0.0008, HL=4.2, range=0.140
+2025-12-07 23:34:01,816 - INFO -   3. ('EWL', 'EWN') [EUROPE]: p=0.0231, HL=4.4, range=0.108
+2025-12-07 23:34:01,816 - INFO - Pair selection: 0.38s
+2025-12-07 23:34:01,867 - INFO - Pairs: 3, Trades: 12, PnL: $-804.29
+2025-12-07 23:34:01,867 - INFO - Exit reasons: {'stop_loss_time': 8, 'convergence': 1, 'max_holding': 3}
+2025-12-07 23:34:01,867 - INFO - ============================================================
+2025-12-07 23:34:01,867 - INFO - Year 2022: Formation 2021
+2025-12-07 23:34:01,867 - INFO - ============================================================
+2025-12-07 23:34:01,868 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:01,976 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:34:02,157 - INFO - Cointegrated pairs: 4
+2025-12-07 23:34:02,157 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:02,204 - INFO - After rolling consistency: 2 pairs (removed 2)
+2025-12-07 23:34:02,204 - INFO - Selected 2 pairs
+2025-12-07 23:34:02,204 - INFO -   1. ('EWU', 'EWI') [EUROPE]: p=0.0142, HL=6.3, range=0.075
+2025-12-07 23:34:02,204 - INFO -   2. ('EWU', 'EWQ') [EUROPE]: p=0.0010, HL=4.7, range=0.053
+2025-12-07 23:34:02,204 - INFO - Pair selection: 0.34s
+2025-12-07 23:34:02,206 - WARNING - Only 2 pairs selected (min: 3), skipping 2022
+2025-12-07 23:34:02,206 - INFO - ============================================================
+2025-12-07 23:34:02,206 - INFO - Year 2023: Formation 2022
+2025-12-07 23:34:02,206 - INFO - ============================================================
+2025-12-07 23:34:02,206 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:02,314 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:34:02,480 - INFO - Cointegrated pairs: 6
+2025-12-07 23:34:02,480 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:02,554 - INFO - After rolling consistency: 2 pairs (removed 4)
+2025-12-07 23:34:02,554 - INFO - Selected 2 pairs
+2025-12-07 23:34:02,554 - INFO -   1. ('VGK', 'EWU') [EUROPE]: p=0.0033, HL=8.9, range=0.139
+2025-12-07 23:34:02,554 - INFO -   2. ('EWU', 'EWN') [EUROPE]: p=0.0239, HL=9.9, range=0.144
+2025-12-07 23:34:02,554 - INFO - Pair selection: 0.35s
+2025-12-07 23:34:02,555 - WARNING - Only 2 pairs selected (min: 3), skipping 2023
+2025-12-07 23:34:02,555 - INFO - ============================================================
+2025-12-07 23:34:02,555 - INFO - Year 2024: Formation 2023
+2025-12-07 23:34:02,555 - INFO - ============================================================
+2025-12-07 23:34:02,556 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:02,675 - INFO - Pairs with corr 0.75-0.95: 75
+2025-12-07 23:34:02,893 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:02,893 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:02,922 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:34:02,922 - INFO - Selected 1 pairs
+2025-12-07 23:34:02,922 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0082, HL=5.5, range=0.055
+2025-12-07 23:34:02,922 - INFO - Pair selection: 0.37s
+2025-12-07 23:34:02,923 - WARNING - Only 1 pairs selected (min: 3), skipping 2024
+2025-12-07 23:34:02,924 - INFO - Backtest completed in 6.7 seconds
+2025-12-07 23:34:02,926 - ERROR - Error running 120-60_moderate: calculate_performance_metrics() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "i:\Winter-Break-Research\scripts\test_window_sizes.py", line 211, in run_window_size_experiment
+    metrics = calculate_performance_metrics(trades_df, config.initial_capital)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: calculate_performance_metrics() takes 1 positional argument but 2 were given
+2025-12-07 23:34:02,926 - INFO - 
+======================================================================
+2025-12-07 23:34:02,926 - INFO - TESTING: 120-30_aggressive
+2025-12-07 23:34:02,926 - INFO - Formation: 120 days | Trading: 30 days
+2025-12-07 23:34:02,926 - INFO - Hedge Update: 15 days
+2025-12-07 23:34:02,926 - INFO - ======================================================================
+
+2025-12-07 23:34:02,926 - INFO - ============================================================
+2025-12-07 23:34:02,926 - INFO - Year 2010: Formation 2009
+2025-12-07 23:34:02,926 - INFO - ============================================================
+2025-12-07 23:34:02,928 - INFO - Selecting pairs from 112 tickers
+2025-12-07 23:34:03,029 - INFO - Pairs with corr 0.75-0.95: 57
+2025-12-07 23:34:03,279 - INFO - Cointegrated pairs: 19
+2025-12-07 23:34:03,279 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:03,540 - INFO - After rolling consistency: 8 pairs (removed 11)
+2025-12-07 23:34:03,540 - INFO - Selected 5 pairs
+2025-12-07 23:34:03,540 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0103, HL=13.2, range=0.228
+2025-12-07 23:34:03,540 - INFO -   2. ('EWU', 'EWL') [EUROPE]: p=0.0069, HL=6.9, range=0.162
+2025-12-07 23:34:03,540 - INFO -   3. ('EWG', 'EWN') [EUROPE]: p=0.0388, HL=9.2, range=0.146
+2025-12-07 23:34:03,540 - INFO -   4. ('EWL', 'EWN') [EUROPE]: p=0.0013, HL=4.0, range=0.112
+2025-12-07 23:34:03,540 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0033, HL=4.4, range=0.076
+2025-12-07 23:34:03,540 - INFO - Pair selection: 0.61s
+2025-12-07 23:34:03,579 - INFO - [DRIFT DETECTED] EWU_EWL Day 163: p-value=0.6261 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:03,649 - INFO - Pairs: 5, Trades: 8, PnL: $590.03
+2025-12-07 23:34:03,649 - INFO - Exit reasons: {'convergence': 2, 'stop_loss_time': 3, 'max_holding': 3}
+2025-12-07 23:34:03,649 - INFO - ============================================================
+2025-12-07 23:34:03,649 - INFO - Year 2011: Formation 2010
+2025-12-07 23:34:03,649 - INFO - ============================================================
+2025-12-07 23:34:03,651 - INFO - Selecting pairs from 117 tickers
+2025-12-07 23:34:03,758 - INFO - Pairs with corr 0.75-0.95: 60
+2025-12-07 23:34:03,926 - INFO - Cointegrated pairs: 8
+2025-12-07 23:34:03,926 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:04,045 - INFO - After rolling consistency: 6 pairs (removed 2)
+2025-12-07 23:34:04,045 - INFO - Selected 6 pairs
+2025-12-07 23:34:04,045 - INFO -   1. ('EWT', 'EWY') [ASIA_DEV]: p=0.0160, HL=7.3, range=0.116
+2025-12-07 23:34:04,045 - INFO -   2. ('KBE', 'KRE') [FINANCIALS]: p=0.0087, HL=6.1, range=0.098
+2025-12-07 23:34:04,045 - INFO -   3. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0116, HL=5.8, range=0.049
+2025-12-07 23:34:04,045 - INFO -   4. ('VGK', 'EWU') [EUROPE]: p=0.0429, HL=5.3, range=0.060
+2025-12-07 23:34:04,045 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0001, HL=2.1, range=0.020
+2025-12-07 23:34:04,045 - INFO - Pair selection: 0.39s
+2025-12-07 23:34:04,180 - INFO - Pairs: 6, Trades: 15, PnL: $-1129.97
+2025-12-07 23:34:04,180 - INFO - Exit reasons: {'stop_loss_time': 10, 'max_holding': 3, 'convergence': 1, 'period_end': 1}
+2025-12-07 23:34:04,180 - INFO - ============================================================
+2025-12-07 23:34:04,180 - INFO - Year 2012: Formation 2011
+2025-12-07 23:34:04,180 - INFO - ============================================================
+2025-12-07 23:34:04,182 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:04,300 - INFO - Pairs with corr 0.75-0.95: 52
+2025-12-07 23:34:04,446 - INFO - Cointegrated pairs: 5
+2025-12-07 23:34:04,447 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:04,511 - INFO - After rolling consistency: 2 pairs (removed 3)
+2025-12-07 23:34:04,511 - INFO - Selected 2 pairs
+2025-12-07 23:34:04,512 - INFO -   1. ('EWP', 'EWN') [EUROPE]: p=0.0025, HL=5.9, range=0.152
+2025-12-07 23:34:04,512 - INFO -   2. ('VCIT', 'IGIB') [BONDS_CORP]: p=0.0043, HL=2.2, range=0.021
+2025-12-07 23:34:04,512 - INFO - Pair selection: 0.33s
+2025-12-07 23:34:04,512 - WARNING - Only 2 pairs selected (min: 3), skipping 2012
+2025-12-07 23:34:04,512 - INFO - ============================================================
+2025-12-07 23:34:04,512 - INFO - Year 2013: Formation 2012
+2025-12-07 23:34:04,512 - INFO - ============================================================
+2025-12-07 23:34:04,513 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:04,640 - INFO - Pairs with corr 0.75-0.95: 70
+2025-12-07 23:34:04,812 - INFO - Cointegrated pairs: 4
+2025-12-07 23:34:04,812 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:04,864 - INFO - After rolling consistency: 1 pairs (removed 3)
+2025-12-07 23:34:04,866 - INFO - Selected 1 pairs
+2025-12-07 23:34:04,866 - INFO -   1. ('EWI', 'EWP') [EUROPE]: p=0.0475, HL=9.0, range=0.162
+2025-12-07 23:34:04,866 - INFO - Pair selection: 0.35s
+2025-12-07 23:34:04,868 - WARNING - Only 1 pairs selected (min: 3), skipping 2013
+2025-12-07 23:34:04,868 - INFO - ============================================================
+2025-12-07 23:34:04,868 - INFO - Year 2014: Formation 2013
+2025-12-07 23:34:04,868 - INFO - ============================================================
+2025-12-07 23:34:04,870 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:04,988 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:34:05,172 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:05,172 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:05,195 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:34:05,195 - INFO - Selected 1 pairs
+2025-12-07 23:34:05,195 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0230, HL=8.8, range=0.090
+2025-12-07 23:34:05,195 - INFO - Pair selection: 0.33s
+2025-12-07 23:34:05,196 - WARNING - Only 1 pairs selected (min: 3), skipping 2014
+2025-12-07 23:34:05,196 - INFO - ============================================================
+2025-12-07 23:34:05,196 - INFO - Year 2015: Formation 2014
+2025-12-07 23:34:05,196 - INFO - ============================================================
+2025-12-07 23:34:05,197 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:05,306 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:05,492 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:05,492 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:05,520 - INFO - After rolling consistency: 0 pairs (removed 3)
+2025-12-07 23:34:05,520 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:34:05,520 - INFO - Pair selection: 0.32s
+2025-12-07 23:34:05,520 - WARNING - No pairs selected for 2015
+2025-12-07 23:34:05,520 - INFO - ============================================================
+2025-12-07 23:34:05,520 - INFO - Year 2016: Formation 2015
+2025-12-07 23:34:05,520 - INFO - ============================================================
+2025-12-07 23:34:05,520 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:05,670 - INFO - Pairs with corr 0.75-0.95: 62
+2025-12-07 23:34:05,915 - INFO - Cointegrated pairs: 14
+2025-12-07 23:34:05,916 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:06,140 - INFO - After rolling consistency: 6 pairs (removed 8)
+2025-12-07 23:34:06,140 - INFO - Selected 4 pairs
+2025-12-07 23:34:06,140 - INFO -   1. ('VGK', 'EWP') [EUROPE]: p=0.0045, HL=8.4, range=0.111
+2025-12-07 23:34:06,140 - INFO -   2. ('FEZ', 'EWP') [EUROPE]: p=0.0164, HL=8.4, range=0.107
+2025-12-07 23:34:06,140 - INFO -   3. ('FEZ', 'EWU') [EUROPE]: p=0.0139, HL=6.1, range=0.090
+2025-12-07 23:34:06,140 - INFO -   4. ('EZU', 'EWU') [EUROPE]: p=0.0296, HL=7.3, range=0.091
+2025-12-07 23:34:06,140 - INFO - Pair selection: 0.62s
+2025-12-07 23:34:06,172 - INFO - [DRIFT DETECTED] EZU_EWU Day 142: p-value=0.3045 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:06,193 - INFO - [DRIFT DETECTED] EZU_EWU Day 166: p-value=0.1649 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:06,238 - INFO - Pairs: 4, Trades: 5, PnL: $161.06
+2025-12-07 23:34:06,238 - INFO - Exit reasons: {'max_holding': 1, 'cointegration_drift': 2, 'convergence': 2}
+2025-12-07 23:34:06,238 - INFO - ============================================================
+2025-12-07 23:34:06,238 - INFO - Year 2017: Formation 2016
+2025-12-07 23:34:06,238 - INFO - ============================================================
+2025-12-07 23:34:06,239 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:06,352 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:06,553 - INFO - Cointegrated pairs: 9
+2025-12-07 23:34:06,553 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:06,678 - INFO - After rolling consistency: 6 pairs (removed 3)
+2025-12-07 23:34:06,678 - INFO - Selected 5 pairs
+2025-12-07 23:34:06,678 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0002, HL=5.1, range=0.090
+2025-12-07 23:34:06,678 - INFO -   2. ('EWH', 'EWY') [ASIA_DEV]: p=0.0195, HL=7.9, range=0.117
+2025-12-07 23:34:06,678 - INFO -   3. ('EWU', 'EWN') [EUROPE]: p=0.0022, HL=6.1, range=0.095
+2025-12-07 23:34:06,678 - INFO -   4. ('SCHV', 'DVY') [US_VALUE]: p=0.0443, HL=11.4, range=0.068
+2025-12-07 23:34:06,678 - INFO -   5. ('DVY', 'VYM') [US_VALUE]: p=0.0092, HL=7.5, range=0.050
+2025-12-07 23:34:06,678 - INFO - Pair selection: 0.44s
+2025-12-07 23:34:06,726 - INFO - [DRIFT DETECTED] EWH_EWY Day 169: p-value=0.9632 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:06,784 - INFO - Pairs: 5, Trades: 11, PnL: $-119.82
+2025-12-07 23:34:06,784 - INFO - Exit reasons: {'stop_loss_time': 5, 'max_holding': 4, 'cointegration_drift': 1, 'convergence': 1}
+2025-12-07 23:34:06,784 - INFO - ============================================================
+2025-12-07 23:34:06,784 - INFO - Year 2018: Formation 2017
+2025-12-07 23:34:06,784 - INFO - ============================================================
+2025-12-07 23:34:06,785 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:06,890 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:07,060 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:07,060 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:07,101 - INFO - After rolling consistency: 2 pairs (removed 1)
+2025-12-07 23:34:07,101 - INFO - Selected 2 pairs
+2025-12-07 23:34:07,101 - INFO -   1. ('VGK', 'EWQ') [EUROPE]: p=0.0301, HL=8.4, range=0.027
+2025-12-07 23:34:07,101 - INFO -   2. ('VFH', 'IAI') [FINANCIALS]: p=0.0163, HL=6.9, range=0.043
+2025-12-07 23:34:07,101 - INFO - Pair selection: 0.32s
+2025-12-07 23:34:07,102 - WARNING - Only 2 pairs selected (min: 3), skipping 2018
+2025-12-07 23:34:07,102 - INFO - ============================================================
+2025-12-07 23:34:07,102 - INFO - Year 2019: Formation 2018
+2025-12-07 23:34:07,102 - INFO - ============================================================
+2025-12-07 23:34:07,103 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:07,215 - INFO - Pairs with corr 0.75-0.95: 67
+2025-12-07 23:34:07,372 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:07,372 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:07,409 - INFO - After rolling consistency: 1 pairs (removed 2)
+2025-12-07 23:34:07,409 - INFO - Selected 1 pairs
+2025-12-07 23:34:07,409 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0072, HL=6.3, range=0.097
+2025-12-07 23:34:07,409 - INFO - Pair selection: 0.31s
+2025-12-07 23:34:07,410 - WARNING - Only 1 pairs selected (min: 3), skipping 2019
+2025-12-07 23:34:07,410 - INFO - ============================================================
+2025-12-07 23:34:07,410 - INFO - Year 2020: Formation 2019
+2025-12-07 23:34:07,410 - INFO - ============================================================
+2025-12-07 23:34:07,411 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:07,532 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:34:07,686 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:07,686 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:07,716 - INFO - After rolling consistency: 0 pairs (removed 2)
+2025-12-07 23:34:07,716 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:34:07,716 - INFO - Pair selection: 0.31s
+2025-12-07 23:34:07,716 - WARNING - No pairs selected for 2020
+2025-12-07 23:34:07,716 - INFO - ============================================================
+2025-12-07 23:34:07,716 - INFO - Year 2021: Formation 2020
+2025-12-07 23:34:07,716 - INFO - ============================================================
+2025-12-07 23:34:07,718 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:07,839 - INFO - Pairs with corr 0.75-0.95: 71
+2025-12-07 23:34:08,023 - INFO - Cointegrated pairs: 6
+2025-12-07 23:34:08,023 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:08,099 - INFO - After rolling consistency: 3 pairs (removed 3)
+2025-12-07 23:34:08,100 - INFO - Selected 3 pairs
+2025-12-07 23:34:08,100 - INFO -   1. ('LQD', 'IGIB') [BONDS_CORP]: p=0.0013, HL=5.8, range=0.091
+2025-12-07 23:34:08,100 - INFO -   2. ('EWG', 'EWL') [EUROPE]: p=0.0008, HL=4.2, range=0.140
+2025-12-07 23:34:08,100 - INFO -   3. ('EWL', 'EWN') [EUROPE]: p=0.0231, HL=4.4, range=0.108
+2025-12-07 23:34:08,100 - INFO - Pair selection: 0.38s
+2025-12-07 23:34:08,158 - INFO - Pairs: 3, Trades: 2, PnL: $-71.21
+2025-12-07 23:34:08,159 - INFO - Exit reasons: {'convergence': 1, 'max_holding': 1}
+2025-12-07 23:34:08,159 - INFO - ============================================================
+2025-12-07 23:34:08,159 - INFO - Year 2022: Formation 2021
+2025-12-07 23:34:08,159 - INFO - ============================================================
+2025-12-07 23:34:08,159 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:08,286 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:34:08,460 - INFO - Cointegrated pairs: 4
+2025-12-07 23:34:08,463 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:08,514 - INFO - After rolling consistency: 2 pairs (removed 2)
+2025-12-07 23:34:08,514 - INFO - Selected 2 pairs
+2025-12-07 23:34:08,514 - INFO -   1. ('EWU', 'EWI') [EUROPE]: p=0.0142, HL=6.3, range=0.075
+2025-12-07 23:34:08,514 - INFO -   2. ('EWU', 'EWQ') [EUROPE]: p=0.0010, HL=4.7, range=0.053
+2025-12-07 23:34:08,514 - INFO - Pair selection: 0.35s
+2025-12-07 23:34:08,515 - WARNING - Only 2 pairs selected (min: 3), skipping 2022
+2025-12-07 23:34:08,515 - INFO - ============================================================
+2025-12-07 23:34:08,515 - INFO - Year 2023: Formation 2022
+2025-12-07 23:34:08,515 - INFO - ============================================================
+2025-12-07 23:34:08,516 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:08,630 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:34:08,803 - INFO - Cointegrated pairs: 6
+2025-12-07 23:34:08,803 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:08,904 - INFO - After rolling consistency: 2 pairs (removed 4)
+2025-12-07 23:34:08,904 - INFO - Selected 2 pairs
+2025-12-07 23:34:08,904 - INFO -   1. ('VGK', 'EWU') [EUROPE]: p=0.0033, HL=8.9, range=0.139
+2025-12-07 23:34:08,904 - INFO -   2. ('EWU', 'EWN') [EUROPE]: p=0.0239, HL=9.9, range=0.144
+2025-12-07 23:34:08,904 - INFO - Pair selection: 0.39s
+2025-12-07 23:34:08,906 - WARNING - Only 2 pairs selected (min: 3), skipping 2023
+2025-12-07 23:34:08,906 - INFO - ============================================================
+2025-12-07 23:34:08,906 - INFO - Year 2024: Formation 2023
+2025-12-07 23:34:08,906 - INFO - ============================================================
+2025-12-07 23:34:08,906 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:09,041 - INFO - Pairs with corr 0.75-0.95: 75
+2025-12-07 23:34:09,227 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:09,228 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:09,260 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:34:09,260 - INFO - Selected 1 pairs
+2025-12-07 23:34:09,262 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0082, HL=5.5, range=0.055
+2025-12-07 23:34:09,262 - INFO - Pair selection: 0.36s
+2025-12-07 23:34:09,264 - WARNING - Only 1 pairs selected (min: 3), skipping 2024
+2025-12-07 23:34:09,265 - INFO - Backtest completed in 6.3 seconds
+2025-12-07 23:34:09,266 - ERROR - Error running 120-30_aggressive: calculate_performance_metrics() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "i:\Winter-Break-Research\scripts\test_window_sizes.py", line 211, in run_window_size_experiment
+    metrics = calculate_performance_metrics(trades_df, config.initial_capital)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: calculate_performance_metrics() takes 1 positional argument but 2 were given
+2025-12-07 23:34:09,266 - INFO - 
+======================================================================
+2025-12-07 23:34:09,266 - INFO - TESTING: 180-90_balanced
+2025-12-07 23:34:09,266 - INFO - Formation: 180 days | Trading: 90 days
+2025-12-07 23:34:09,266 - INFO - Hedge Update: 30 days
+2025-12-07 23:34:09,266 - INFO - ======================================================================
+
+2025-12-07 23:34:09,266 - INFO - ============================================================
+2025-12-07 23:34:09,266 - INFO - Year 2010: Formation 2009
+2025-12-07 23:34:09,266 - INFO - ============================================================
+2025-12-07 23:34:09,267 - INFO - Selecting pairs from 112 tickers
+2025-12-07 23:34:09,376 - INFO - Pairs with corr 0.75-0.95: 57
+2025-12-07 23:34:09,564 - INFO - Cointegrated pairs: 19
+2025-12-07 23:34:09,565 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:09,882 - INFO - After rolling consistency: 8 pairs (removed 11)
+2025-12-07 23:34:09,882 - INFO - Selected 5 pairs
+2025-12-07 23:34:09,882 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0103, HL=13.2, range=0.228
+2025-12-07 23:34:09,882 - INFO -   2. ('EWU', 'EWL') [EUROPE]: p=0.0069, HL=6.9, range=0.162
+2025-12-07 23:34:09,882 - INFO -   3. ('EWG', 'EWN') [EUROPE]: p=0.0388, HL=9.2, range=0.146
+2025-12-07 23:34:09,882 - INFO -   4. ('EWL', 'EWN') [EUROPE]: p=0.0013, HL=4.0, range=0.112
+2025-12-07 23:34:09,882 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0033, HL=4.4, range=0.076
+2025-12-07 23:34:09,882 - INFO - Pair selection: 0.61s
+2025-12-07 23:34:09,915 - INFO - [DRIFT DETECTED] EWU_EWL Day 163: p-value=0.6261 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:09,952 - INFO - Pairs: 5, Trades: 13, PnL: $733.95
+2025-12-07 23:34:09,952 - INFO - Exit reasons: {'convergence': 5, 'stop_loss_time': 5, 'max_holding': 3}
+2025-12-07 23:34:09,952 - INFO - ============================================================
+2025-12-07 23:34:09,952 - INFO - Year 2011: Formation 2010
+2025-12-07 23:34:09,952 - INFO - ============================================================
+2025-12-07 23:34:09,955 - INFO - Selecting pairs from 117 tickers
+2025-12-07 23:34:10,106 - INFO - Pairs with corr 0.75-0.95: 60
+2025-12-07 23:34:10,299 - INFO - Cointegrated pairs: 8
+2025-12-07 23:34:10,299 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:10,419 - INFO - After rolling consistency: 6 pairs (removed 2)
+2025-12-07 23:34:10,420 - INFO - Selected 6 pairs
+2025-12-07 23:34:10,420 - INFO -   1. ('EWT', 'EWY') [ASIA_DEV]: p=0.0160, HL=7.3, range=0.116
+2025-12-07 23:34:10,420 - INFO -   2. ('KBE', 'KRE') [FINANCIALS]: p=0.0087, HL=6.1, range=0.098
+2025-12-07 23:34:10,420 - INFO -   3. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0116, HL=5.8, range=0.049
+2025-12-07 23:34:10,420 - INFO -   4. ('VGK', 'EWU') [EUROPE]: p=0.0429, HL=5.3, range=0.060
+2025-12-07 23:34:10,420 - INFO -   5. ('HYG', 'JNK') [BONDS_CORP]: p=0.0001, HL=2.1, range=0.020
+2025-12-07 23:34:10,420 - INFO - Pair selection: 0.47s
+2025-12-07 23:34:10,499 - INFO - Pairs: 6, Trades: 21, PnL: $-968.15
+2025-12-07 23:34:10,499 - INFO - Exit reasons: {'stop_loss_time': 10, 'max_holding': 3, 'convergence': 7, 'period_end': 1}
+2025-12-07 23:34:10,499 - INFO - ============================================================
+2025-12-07 23:34:10,499 - INFO - Year 2012: Formation 2011
+2025-12-07 23:34:10,499 - INFO - ============================================================
+2025-12-07 23:34:10,500 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:10,630 - INFO - Pairs with corr 0.75-0.95: 52
+2025-12-07 23:34:10,802 - INFO - Cointegrated pairs: 5
+2025-12-07 23:34:10,802 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:10,864 - INFO - After rolling consistency: 2 pairs (removed 3)
+2025-12-07 23:34:10,864 - INFO - Selected 2 pairs
+2025-12-07 23:34:10,865 - INFO -   1. ('EWP', 'EWN') [EUROPE]: p=0.0025, HL=5.9, range=0.152
+2025-12-07 23:34:10,865 - INFO -   2. ('VCIT', 'IGIB') [BONDS_CORP]: p=0.0043, HL=2.2, range=0.021
+2025-12-07 23:34:10,865 - INFO - Pair selection: 0.36s
+2025-12-07 23:34:10,866 - WARNING - Only 2 pairs selected (min: 3), skipping 2012
+2025-12-07 23:34:10,866 - INFO - ============================================================
+2025-12-07 23:34:10,866 - INFO - Year 2013: Formation 2012
+2025-12-07 23:34:10,866 - INFO - ============================================================
+2025-12-07 23:34:10,866 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:10,980 - INFO - Pairs with corr 0.75-0.95: 70
+2025-12-07 23:34:11,162 - INFO - Cointegrated pairs: 4
+2025-12-07 23:34:11,162 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:11,213 - INFO - After rolling consistency: 1 pairs (removed 3)
+2025-12-07 23:34:11,213 - INFO - Selected 1 pairs
+2025-12-07 23:34:11,213 - INFO -   1. ('EWI', 'EWP') [EUROPE]: p=0.0475, HL=9.0, range=0.162
+2025-12-07 23:34:11,213 - INFO - Pair selection: 0.35s
+2025-12-07 23:34:11,214 - WARNING - Only 1 pairs selected (min: 3), skipping 2013
+2025-12-07 23:34:11,214 - INFO - ============================================================
+2025-12-07 23:34:11,214 - INFO - Year 2014: Formation 2013
+2025-12-07 23:34:11,214 - INFO - ============================================================
+2025-12-07 23:34:11,215 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:11,337 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:34:11,508 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:11,508 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:11,561 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:34:11,562 - INFO - Selected 1 pairs
+2025-12-07 23:34:11,562 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0230, HL=8.8, range=0.090
+2025-12-07 23:34:11,562 - INFO - Pair selection: 0.35s
+2025-12-07 23:34:11,563 - WARNING - Only 1 pairs selected (min: 3), skipping 2014
+2025-12-07 23:34:11,563 - INFO - ============================================================
+2025-12-07 23:34:11,563 - INFO - Year 2015: Formation 2014
+2025-12-07 23:34:11,563 - INFO - ============================================================
+2025-12-07 23:34:11,564 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:11,718 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:11,918 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:11,918 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:11,948 - INFO - After rolling consistency: 0 pairs (removed 3)
+2025-12-07 23:34:11,948 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:34:11,948 - INFO - Pair selection: 0.38s
+2025-12-07 23:34:11,948 - WARNING - No pairs selected for 2015
+2025-12-07 23:34:11,948 - INFO - ============================================================
+2025-12-07 23:34:11,948 - INFO - Year 2016: Formation 2015
+2025-12-07 23:34:11,948 - INFO - ============================================================
+2025-12-07 23:34:11,949 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:12,086 - INFO - Pairs with corr 0.75-0.95: 62
+2025-12-07 23:34:12,328 - INFO - Cointegrated pairs: 14
+2025-12-07 23:34:12,328 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:12,536 - INFO - After rolling consistency: 6 pairs (removed 8)
+2025-12-07 23:34:12,536 - INFO - Selected 4 pairs
+2025-12-07 23:34:12,536 - INFO -   1. ('VGK', 'EWP') [EUROPE]: p=0.0045, HL=8.4, range=0.111
+2025-12-07 23:34:12,536 - INFO -   2. ('FEZ', 'EWP') [EUROPE]: p=0.0164, HL=8.4, range=0.107
+2025-12-07 23:34:12,536 - INFO -   3. ('FEZ', 'EWU') [EUROPE]: p=0.0139, HL=6.1, range=0.090
+2025-12-07 23:34:12,536 - INFO -   4. ('EZU', 'EWU') [EUROPE]: p=0.0296, HL=7.3, range=0.091
+2025-12-07 23:34:12,536 - INFO - Pair selection: 0.59s
+2025-12-07 23:34:12,554 - INFO - [DRIFT DETECTED] EZU_EWU Day 142: p-value=0.3045 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:12,572 - INFO - [DRIFT DETECTED] EZU_EWU Day 166: p-value=0.1649 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:12,578 - INFO - [DRIFT DETECTED] VGK_EWP Day 168: p-value=0.4655 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:12,594 - INFO - [DRIFT DETECTED] VGK_EWP Day 195: p-value=0.3912 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:12,615 - INFO - [DRIFT DETECTED] VGK_EWP Day 230: p-value=0.7226 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:12,635 - INFO - Pairs: 4, Trades: 8, PnL: $-22.38
+2025-12-07 23:34:12,635 - INFO - Exit reasons: {'max_holding': 1, 'cointegration_drift': 5, 'convergence': 1, 'stop_loss_time': 1}
+2025-12-07 23:34:12,635 - INFO - ============================================================
+2025-12-07 23:34:12,635 - INFO - Year 2017: Formation 2016
+2025-12-07 23:34:12,635 - INFO - ============================================================
+2025-12-07 23:34:12,636 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:12,779 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:13,002 - INFO - Cointegrated pairs: 9
+2025-12-07 23:34:13,002 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:13,170 - INFO - After rolling consistency: 6 pairs (removed 3)
+2025-12-07 23:34:13,170 - INFO - Selected 5 pairs
+2025-12-07 23:34:13,170 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0002, HL=5.1, range=0.090
+2025-12-07 23:34:13,170 - INFO -   2. ('EWH', 'EWY') [ASIA_DEV]: p=0.0195, HL=7.9, range=0.117
+2025-12-07 23:34:13,170 - INFO -   3. ('EWU', 'EWN') [EUROPE]: p=0.0022, HL=6.1, range=0.095
+2025-12-07 23:34:13,170 - INFO -   4. ('SCHV', 'DVY') [US_VALUE]: p=0.0443, HL=11.4, range=0.068
+2025-12-07 23:34:13,170 - INFO -   5. ('DVY', 'VYM') [US_VALUE]: p=0.0092, HL=7.5, range=0.050
+2025-12-07 23:34:13,172 - INFO - Pair selection: 0.53s
+2025-12-07 23:34:13,209 - INFO - [DRIFT DETECTED] EWH_EWY Day 169: p-value=0.9632 > 0.15, exiting position (holding_days=21)
+2025-12-07 23:34:13,264 - INFO - Pairs: 5, Trades: 10, PnL: $-222.86
+2025-12-07 23:34:13,264 - INFO - Exit reasons: {'stop_loss_time': 4, 'max_holding': 4, 'cointegration_drift': 1, 'convergence': 1}
+2025-12-07 23:34:13,264 - INFO - ============================================================
+2025-12-07 23:34:13,264 - INFO - Year 2018: Formation 2017
+2025-12-07 23:34:13,264 - INFO - ============================================================
+2025-12-07 23:34:13,265 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:13,387 - INFO - Pairs with corr 0.75-0.95: 68
+2025-12-07 23:34:13,558 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:13,558 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:13,605 - INFO - After rolling consistency: 2 pairs (removed 1)
+2025-12-07 23:34:13,606 - INFO - Selected 2 pairs
+2025-12-07 23:34:13,606 - INFO -   1. ('VGK', 'EWQ') [EUROPE]: p=0.0301, HL=8.4, range=0.027
+2025-12-07 23:34:13,606 - INFO -   2. ('VFH', 'IAI') [FINANCIALS]: p=0.0163, HL=6.9, range=0.043
+2025-12-07 23:34:13,609 - INFO - Pair selection: 0.34s
+2025-12-07 23:34:13,614 - WARNING - Only 2 pairs selected (min: 3), skipping 2018
+2025-12-07 23:34:13,615 - INFO - ============================================================
+2025-12-07 23:34:13,615 - INFO - Year 2019: Formation 2018
+2025-12-07 23:34:13,615 - INFO - ============================================================
+2025-12-07 23:34:13,617 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:13,997 - INFO - Pairs with corr 0.75-0.95: 67
+2025-12-07 23:34:14,215 - INFO - Cointegrated pairs: 3
+2025-12-07 23:34:14,215 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:14,253 - INFO - After rolling consistency: 1 pairs (removed 2)
+2025-12-07 23:34:14,253 - INFO - Selected 1 pairs
+2025-12-07 23:34:14,253 - INFO -   1. ('XLY', 'XRT') [CONSUMER_DISC]: p=0.0072, HL=6.3, range=0.097
+2025-12-07 23:34:14,253 - INFO - Pair selection: 0.64s
+2025-12-07 23:34:14,254 - WARNING - Only 1 pairs selected (min: 3), skipping 2019
+2025-12-07 23:34:14,255 - INFO - ============================================================
+2025-12-07 23:34:14,255 - INFO - Year 2020: Formation 2019
+2025-12-07 23:34:14,255 - INFO - ============================================================
+2025-12-07 23:34:14,255 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:14,374 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:34:14,539 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:14,539 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:14,562 - INFO - After rolling consistency: 0 pairs (removed 2)
+2025-12-07 23:34:14,562 - WARNING - No pairs passed rolling consistency check
+2025-12-07 23:34:14,562 - INFO - Pair selection: 0.31s
+2025-12-07 23:34:14,562 - WARNING - No pairs selected for 2020
+2025-12-07 23:34:14,562 - INFO - ============================================================
+2025-12-07 23:34:14,562 - INFO - Year 2021: Formation 2020
+2025-12-07 23:34:14,562 - INFO - ============================================================
+2025-12-07 23:34:14,563 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:14,692 - INFO - Pairs with corr 0.75-0.95: 71
+2025-12-07 23:34:14,868 - INFO - Cointegrated pairs: 6
+2025-12-07 23:34:14,868 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:14,952 - INFO - After rolling consistency: 3 pairs (removed 3)
+2025-12-07 23:34:14,952 - INFO - Selected 3 pairs
+2025-12-07 23:34:14,952 - INFO -   1. ('LQD', 'IGIB') [BONDS_CORP]: p=0.0013, HL=5.8, range=0.091
+2025-12-07 23:34:14,952 - INFO -   2. ('EWG', 'EWL') [EUROPE]: p=0.0008, HL=4.2, range=0.140
+2025-12-07 23:34:14,952 - INFO -   3. ('EWL', 'EWN') [EUROPE]: p=0.0231, HL=4.4, range=0.108
+2025-12-07 23:34:14,952 - INFO - Pair selection: 0.39s
+2025-12-07 23:34:14,994 - INFO - Pairs: 3, Trades: 12, PnL: $-804.29
+2025-12-07 23:34:14,994 - INFO - Exit reasons: {'stop_loss_time': 8, 'convergence': 1, 'max_holding': 3}
+2025-12-07 23:34:14,994 - INFO - ============================================================
+2025-12-07 23:34:14,994 - INFO - Year 2022: Formation 2021
+2025-12-07 23:34:14,994 - INFO - ============================================================
+2025-12-07 23:34:14,995 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:15,101 - INFO - Pairs with corr 0.75-0.95: 73
+2025-12-07 23:34:15,294 - INFO - Cointegrated pairs: 4
+2025-12-07 23:34:15,294 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:15,340 - INFO - After rolling consistency: 2 pairs (removed 2)
+2025-12-07 23:34:15,340 - INFO - Selected 2 pairs
+2025-12-07 23:34:15,340 - INFO -   1. ('EWU', 'EWI') [EUROPE]: p=0.0142, HL=6.3, range=0.075
+2025-12-07 23:34:15,340 - INFO -   2. ('EWU', 'EWQ') [EUROPE]: p=0.0010, HL=4.7, range=0.053
+2025-12-07 23:34:15,340 - INFO - Pair selection: 0.34s
+2025-12-07 23:34:15,341 - WARNING - Only 2 pairs selected (min: 3), skipping 2022
+2025-12-07 23:34:15,341 - INFO - ============================================================
+2025-12-07 23:34:15,341 - INFO - Year 2023: Formation 2022
+2025-12-07 23:34:15,341 - INFO - ============================================================
+2025-12-07 23:34:15,342 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:15,465 - INFO - Pairs with corr 0.75-0.95: 64
+2025-12-07 23:34:15,623 - INFO - Cointegrated pairs: 6
+2025-12-07 23:34:15,623 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:15,715 - INFO - After rolling consistency: 2 pairs (removed 4)
+2025-12-07 23:34:15,715 - INFO - Selected 2 pairs
+2025-12-07 23:34:15,715 - INFO -   1. ('VGK', 'EWU') [EUROPE]: p=0.0033, HL=8.9, range=0.139
+2025-12-07 23:34:15,715 - INFO -   2. ('EWU', 'EWN') [EUROPE]: p=0.0239, HL=9.9, range=0.144
+2025-12-07 23:34:15,715 - INFO - Pair selection: 0.37s
+2025-12-07 23:34:15,716 - WARNING - Only 2 pairs selected (min: 3), skipping 2023
+2025-12-07 23:34:15,716 - INFO - ============================================================
+2025-12-07 23:34:15,716 - INFO - Year 2024: Formation 2023
+2025-12-07 23:34:15,716 - INFO - ============================================================
+2025-12-07 23:34:15,717 - INFO - Selecting pairs from 119 tickers
+2025-12-07 23:34:15,831 - INFO - Pairs with corr 0.75-0.95: 75
+2025-12-07 23:34:16,009 - INFO - Cointegrated pairs: 2
+2025-12-07 23:34:16,010 - INFO - Running rolling consistency check (4 windows, 2 required)
+2025-12-07 23:34:16,040 - INFO - After rolling consistency: 1 pairs (removed 1)
+2025-12-07 23:34:16,040 - INFO - Selected 1 pairs
+2025-12-07 23:34:16,040 - INFO -   1. ('EWU', 'EWL') [EUROPE]: p=0.0082, HL=5.5, range=0.055
+2025-12-07 23:34:16,040 - INFO - Pair selection: 0.32s
+2025-12-07 23:34:16,041 - WARNING - Only 1 pairs selected (min: 3), skipping 2024
+2025-12-07 23:34:16,041 - INFO - Backtest completed in 6.8 seconds
+2025-12-07 23:34:16,043 - ERROR - Error running 180-90_balanced: calculate_performance_metrics() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "i:\Winter-Break-Research\scripts\test_window_sizes.py", line 211, in run_window_size_experiment
+    metrics = calculate_performance_metrics(trades_df, config.initial_capital)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: calculate_performance_metrics() takes 1 positional argument but 2 were given
+2025-12-07 23:34:16,043 - ERROR - No successful backtests completed
+
+======================================================================
+WINDOW SIZE EMPIRICAL ANALYSIS
+======================================================================
+
+Critical Fix #2: Test formation/trading window sizes
+
+This analysis will:
+  1. Test 5 different window configurations
+  2. Run full backtests for each (may take 10-30 minutes)
+  3. Compare Sharpe, drawdown, turnover
+  4. Recommend optimal settings
+
+======================================================================
+

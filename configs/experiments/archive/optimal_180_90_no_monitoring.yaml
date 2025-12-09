@@ -1,0 +1,77 @@
+# Optimal 180-90 WITHOUT Cointegration Monitoring
+# For comparison with monitoring ON version
+
+experiment_name: optimal_180_90_no_monitoring
+description: "180-90 windows WITHOUT cointegration drift monitoring (for A/B test)"
+
+# Same parameters as optimal_180_90 except monitoring disabled
+formation_days: 180
+trading_days: 90
+
+# Pair selection
+pvalue_threshold: 0.05
+use_log_prices: true
+min_half_life: 5.0
+max_half_life: 50.0
+min_correlation: 0.75
+max_correlation: 0.95
+
+top_pairs: 20
+max_pairs_per_sector: 5
+max_pairs_per_etf: 2
+min_spread_range_pct: 0.02
+
+rolling_consistency: false
+
+# Trading signals
+entry_threshold_sigma: 2.0
+exit_threshold_sigma: 0.5
+exit_tolerance_sigma: 0.1
+stop_loss_sigma: 4.0
+
+# Adaptive features
+use_adaptive_lookback: true
+adaptive_lookback_multiplier: 4.0
+adaptive_lookback_min: 30
+adaptive_lookback_max: 120
+use_fixed_exit_params: true
+
+# Position management
+max_holding_days: 60
+dynamic_max_holding: true
+max_holding_multiplier: 3.0
+max_positions: 10
+
+time_based_stops: true
+stop_tightening_rate: 0.15
+
+# ============================================================================
+# COINTEGRATION MONITORING: DISABLED (KEY DIFFERENCE)
+# ============================================================================
+enable_cointegration_monitoring: false
+
+# Capital
+initial_capital: 50000
+capital_per_pair: 10000
+compounding: false
+leverage: 1.0
+transaction_cost_bps: 10.0
+
+# Hedge updates
+dynamic_hedge: true
+hedge_update_days: 30
+
+# Blacklist
+blacklist_stoploss_rate: 0.30
+blacklist_min_trades: 3
+
+# Output
+output_dir: results
+save_trades: true
+save_summary: true
+save_config_snapshot: true
+timestamped_output: true
+
+# Data paths
+price_data_path: data/raw/etf_prices_fresh.csv
+etf_metadata_path: configs/etf_metadata.yaml

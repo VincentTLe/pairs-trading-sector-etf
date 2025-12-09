@@ -1,0 +1,93 @@
+# ============================================================================
+# Balanced Stop-Loss Configuration
+# Based on vidyamurthy_practical.yaml with moderate stop-loss
+# ============================================================================
+# This config uses a balanced 5.0 sigma stop-loss for proper risk management
+# while still allowing sufficient room for mean reversion.
+
+experiment_name: balanced_stop_loss
+description: "Vidyamurthy framework with balanced stop-loss (5.0 sigma)"
+
+# Formation & Pair Selection
+formation_days: 252
+trading_days: 252
+pvalue_threshold: 0.05
+use_log_prices: true
+
+# Half-Life Bounds
+min_half_life: 5.0
+max_half_life: 30.0
+
+# Correlation Filter
+min_correlation: 0.75
+max_correlation: 0.95
+
+# Pair Selection
+top_pairs: 20
+max_pairs_per_sector: 5
+max_pairs_per_etf: 2
+min_spread_range_pct: 0.02
+
+# Sector Focus
+sector_focus: true
+exclude_sectors:
+  - BONDS_GOV
+  - BONDS_CORP
+  - COMMODITIES
+  - EMERGING
+
+rolling_consistency: false
+n_rolling_windows: 4
+min_passing_windows: 2
+
+# ============================================================================
+# BALANCED THRESHOLDS
+# ============================================================================
+entry_threshold_sigma: 2.0     # Entry at 2.0 sigma
+exit_threshold_sigma: 0.5      # Exit near mean
+exit_tolerance_sigma: 0.0
+stop_loss_sigma: 5.0           # 3 sigma gap from entry - allows reversion
+
+# ============================================================================
+# TRADABILITY & EXITS
+# ============================================================================
+use_bootstrap_holding_period: true
+bootstrap_n_samples: 1000
+
+use_adaptive_lookback: true
+adaptive_lookback_multiplier: 4.0
+adaptive_lookback_min: 20
+adaptive_lookback_max: 120
+
+use_fixed_exit_params: true
+
+# Time-based stops disabled
+time_based_stops: false
+stop_tightening_rate: 0.15
+max_holding_days: 60
+dynamic_max_holding: true
+max_holding_multiplier: 3.0
+
+# Portfolio
+max_positions: 10
+compounding: true
+leverage: 2.0
+dynamic_hedge: true
+hedge_update_days: 63
+min_pairs_for_trading: 1
+
+transaction_cost_bps: 5.0
+
+blacklist_stoploss_rate: 0.30
+blacklist_min_trades: 3
+
+# Output
+output_dir: results
+save_trades: true
+save_summary: true
+save_config_snapshot: true
+timestamped_output: true
+
+# Data Paths
+price_data_path: data/raw/etf_prices_fresh.csv
+etf_metadata_path: configs/etf_metadata.yaml

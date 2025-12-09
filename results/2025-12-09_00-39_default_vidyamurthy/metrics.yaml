@@ -1,0 +1,64 @@
+avg_holding_days: 7.875
+avg_loser: -33.93140895600346
+avg_pnl: -7.705607348533176
+avg_winner: 36.00406199725062
+by_exit_reason:
+  cointegration_drift:
+    avg_pnl: 28.473031756015004
+    total_pnl: 85.41909526804501
+    trades: 3
+    win_rate: 66.66666666666666
+  convergence:
+    avg_pnl: 3.5924426589760454
+    total_pnl: 14.369770635904182
+    trades: 4
+    win_rate: 50.0
+  stop_loss:
+    avg_pnl: -24.78650927560889
+    total_pnl: -223.07858348048
+    trades: 9
+    win_rate: 22.22222222222222
+by_sector:
+  EUROPE:
+    avg_pnl: -57.26257873841775
+    total_pnl: -57.26257873841775
+    trades: 1
+    win_rate: 0.0
+  FINANCIALS:
+    avg_pnl: 10.436586481767321
+    total_pnl: 20.873172963534643
+    trades: 2
+    win_rate: 50.0
+  HEALTHCARE:
+    avg_pnl: -6.543525601863393
+    total_pnl: -78.52230722236071
+    trades: 12
+    win_rate: 41.66666666666667
+  US_GROWTH:
+    avg_pnl: -8.378004579286994
+    total_pnl: -8.378004579286994
+    trades: 1
+    win_rate: 0.0
+losing_trades: 10
+max_drawdown: 158.961287052013
+profit_factor: !!python/object/apply:numpy._core.multiarray.scalar
+- !!python/object/apply:numpy.dtype
+  args:
+  - f8
+  - false
+  - true
+  state: !!python/tuple
+  - 3
+  - <
+  - null
+  - null
+  - null
+  - -1
+  - -1
+  - 0
+- !!binary |
+  wh8ZLHBf5D8=
+total_pnl: -123.28971757653082
+total_trades: 16
+win_rate: 37.5
+winning_trades: 6

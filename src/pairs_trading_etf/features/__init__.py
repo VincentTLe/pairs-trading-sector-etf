@@ -1,6 +1,6 @@
 """Feature generation utilities for ETF analytics."""
 
-from pairs_trading_etf.features.hedging import (
+from .hedging import (
     HedgeRatioEstimate,
     RollingHedgeConfig,
     estimate_hedge_ratio_ols,
@@ -9,7 +9,7 @@ from pairs_trading_etf.features.hedging import (
     hedge_ratio_stability,
 )
 
-from pairs_trading_etf.features.kalman_hedge import (
+from .kalman_hedge import (
     KalmanHedgeResult,
     kalman_filter_hedge,
     kalman_filter_hedge_with_regime,

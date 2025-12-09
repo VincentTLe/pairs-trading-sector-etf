@@ -1,0 +1,110 @@
+# Optimal 180-90 Window Configuration
+# Based on Session 19 empirical testing results
+# Shows 167% more trades than 252-252 baseline
+
+experiment_name: optimal_180_90
+description: "Optimal window sizes from empirical testing - 180 formation / 90 trading"
+
+# ============================================================================
+# OPTIMAL WINDOW SIZES (Session 19 Empirical Finding)
+# ============================================================================
+# Formation: 180 days (~9 months) - sufficient for cointegration testing
+# Trading: 90 days (~3 months) - matches typical half-life ranges
+formation_days: 180
+trading_days: 90
+
+# ============================================================================
+# PAIR SELECTION (Vidyamurthy Ch.6)
+# ============================================================================
+pvalue_threshold: 0.05          # Standard 5% significance
+use_log_prices: true
+min_half_life: 5.0
+max_half_life: 50.0
+min_correlation: 0.75
+max_correlation: 0.95
+
+# Pair selection
+top_pairs: 20
+max_pairs_per_sector: 5
+max_pairs_per_etf: 2
+min_spread_range_pct: 0.02
+
+# Rolling consistency (disabled for walk-forward)
+rolling_consistency: false
+n_rolling_windows: 4
+min_passing_windows: 2
+
+# ============================================================================
+# TRADING SIGNALS (Vidyamurthy Ch.8)
+# ============================================================================
+entry_threshold_sigma: 2.0
+exit_threshold_sigma: 0.5
+exit_tolerance_sigma: 0.1
+stop_loss_sigma: 4.0
+
+# ============================================================================
+# ADAPTIVE FEATURES
+# ============================================================================
+use_adaptive_lookback: true
+adaptive_lookback_multiplier: 4.0
+adaptive_lookback_min: 30
+adaptive_lookback_max: 120
+
+use_fixed_exit_params: true     # QMA Level 2 compliance
+
+# ============================================================================
+# POSITION MANAGEMENT
+# ============================================================================
+max_holding_days: 60
+dynamic_max_holding: true
+max_holding_multiplier: 3.0
+max_positions: 10
+
+# Time-based stops
+time_based_stops: true
+stop_tightening_rate: 0.15
+
+# ============================================================================
+# COINTEGRATION DRIFT MONITORING (Session 19 Critical Fix)
+# ============================================================================
+enable_cointegration_monitoring: true
+coint_check_frequency_days: 21          # Monthly re-testing
+coint_drift_pvalue_threshold: 0.15      # Looser than formation (0.05)
+coint_drift_lookback_days: 60           # 60-day rolling window
+coint_drift_min_observations: 30        # Minimum valid observations
+
+# ============================================================================
+# CAPITAL & COSTS
+# ============================================================================
+initial_capital: 50000
+capital_per_pair: 10000
+compounding: false
+leverage: 1.0
+transaction_cost_bps: 10.0              # 10 bps per trade
+
+# ============================================================================
+# HEDGE UPDATES
+# ============================================================================
+dynamic_hedge: true
+hedge_update_days: 30                   # Update every month
+
+# ============================================================================
+# BLACKLIST
+# ============================================================================
+blacklist_stoploss_rate: 0.30
+blacklist_min_trades: 3
+
+# ============================================================================
+# OUTPUT
+# ============================================================================
+output_dir: results
+save_trades: true
+save_summary: true
+save_config_snapshot: true
+timestamped_output: true
+
+# ============================================================================
+# DATA PATHS
+# ============================================================================
+price_data_path: data/raw/etf_prices_fresh.csv
+etf_metadata_path: configs/etf_metadata.yaml

@@ -1,0 +1,6 @@
+Config,Formation,Trading,Hedge_Update,Trades,Sharpe,Return_%,MaxDD_%,Calmar,WinRate,AvgHold_Days,Annual_Trades,Runtime_Sec
+252-252_baseline,252,252,63,24,,,,,0,11.916666666666666,6048.0,6.220121
+252-126_gatev,252,126,42,26,,,,,0,13.5,6552.0,6.131287
+120-60_moderate,120,60,30,64,,,,,0,10.96875,16128.0,6.136551
+120-30_aggressive,120,30,15,41,,,,,0,11.804878048780488,10332.0,6.309927
+180-90_balanced,180,90,30,64,,,,,0,10.96875,16128.0,6.077211

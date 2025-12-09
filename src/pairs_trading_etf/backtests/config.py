@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Dict, Any, Tuple
 
 from ..utils.sectors import DEFAULT_EXCLUDED_SECTORS
+import src.pairs_trading_etf.constants as constant
 
 
 # =============================================================================
@@ -41,192 +42,185 @@ class BacktestConfig:
     # ==========================================================================
     # Time Windows
     # ==========================================================================
-    formation_days: int = 252        # 1 year for pair selection
-    trading_days: int = 252          # 1 year trading period
+    formation_days: int = constant.FORMATION_PERIOD_DAYS
+    trading_days: int = constant.TRADING_DAYS_PER_YEAR
     hedge_update_days: int = 63      # Quarterly hedge ratio update
     
     # ==========================================================================
     # Cointegration Testing
     # ==========================================================================
     # WARNING: p-value must be 0.01 or 0.05 ONLY. Never increase above 0.05!
-    # Higher p-values lead to false positives and poor out-of-sample performance.
-    # Per research findings: "Do not increase this threshold in future projects"
-    pvalue_threshold: float = 0.05   # E-G cointegration p-value (LOCKED: 0.01 or 0.05)
-    min_half_life: float = 2.0       # Ch.7: Too fast = noise (< 2 days)
-    max_half_life: float = 50.0      # Ch.7: Too slow = capital inefficient (> 50 days)
-    use_log_prices: bool = True      # Use log prices for spread
+    pvalue_threshold: float = constant.PVALUE_FORMATION
+    min_half_life: float = constant.DEFAULT_MIN_HALF_LIFE
+    max_half_life: float = constant.DEFAULT_MAX_HALF_LIFE
+    use_log_prices: bool = True
     
     # ==========================================================================
     # Correlation Filter
     # ==========================================================================
-    min_correlation: float = 0.75    # Minimum correlation
-    max_correlation: float = 0.95    # Maximum (avoid identical ETFs)
+    min_correlation: float = constant.DEFAULT_MIN_CORRELATION
+    max_correlation: float = constant.DEFAULT_MAX_CORRELATION
     
     # ==========================================================================
-    # Rolling Consistency (optional)
+    # Rolling Consistency (RECOMMENDED - enabled by default)
     # ==========================================================================
-    rolling_consistency: bool = False  # Check consistency across windows
-    n_rolling_windows: int = 4        # Number of sub-windows
-    min_passing_windows: int = 2      # Windows that must pass
+    rolling_consistency: bool = True
+    n_rolling_windows: int = 4
+    min_passing_windows: int = 2
     
     # ==========================================================================
     # Pair Selection
     # ==========================================================================
-    top_pairs: int = 20              # Max pairs to select per year
-    max_pairs_per_sector: int = 5    # Diversification limit per sector
-    max_pairs_per_etf: int = 2       # Diversification limit per ETF
-    min_spread_range_pct: float = 0.02  # Min expected spread movement
+    top_pairs: int = 20
+    max_pairs_per_sector: int = 5
+    max_pairs_per_etf: int = 2
+    min_spread_range_pct: float = 0.02
     
     # ==========================================================================
     # Sector Focus
     # ==========================================================================
-    sector_focus: bool = True        # Only same-sector pairs
+    sector_focus: bool = True
     exclude_sectors: Tuple[str, ...] = DEFAULT_EXCLUDED_SECTORS
     
     # ==========================================================================
     # Trading Signals (Vidyamurthy Ch.8: Optimal Threshold Design)
     # ==========================================================================
-    # Per Ch.8: Optimal threshold Delta* ~ 0.75 sigma maximizes profit function f(Delta) = Delta * [1 - N(Delta)]
-    # This balances profit-per-trade (higher Delta) vs trade frequency (lower Delta)
     # Traditional z-score (2.0-2.5) is statistically motivated, NOT economically optimal
-    # Use compute_optimal_threshold() to verify: solves d/dDelta[Delta(1-N(Delta))] = 0 -> Delta* ~ 0.7477
-    entry_threshold_sigma: float = 0.75   # Ch.8 optimal Delta* (NOT traditional 2.0!)
-    use_optimal_entry_threshold: bool = False  # If True, compute entry threshold from transaction costs
-    exit_threshold_sigma: float = 0.0     # Exit at mean (spread = equilibrium)
-    exit_tolerance_sigma: float = 0.1     # Ch.8: Exit if |z - exit_threshold| <= tolerance
-    stop_loss_sigma: float = 4.0          # Z-score stop (backup if time_based_stops=False)
-    zscore_lookback: int = 60             # Default lookback (overridden if use_adaptive_lookback=True)
+    entry_threshold_sigma: float = constant.DEFAULT_ENTRY_THRESHOLD_SIGMA   # LEGACY fallback
+
+    # Optimal threshold modes (RECOMMENDED: use_optimal_entry_threshold=True)
+    use_optimal_entry_threshold: bool = False
+    optimal_threshold_method: str = 'nonparametric'
+    # - 'white_noise': Use formula Δ* = argmax[Δ(1-N(Δ))], COMPUTED per pair with transaction costs
+    # - 'nonparametric': Use historical data to find Δ that maximizes profit (RECOMMENDED)
+    
+    optimal_threshold_lambda: float = constant.OPTIMAL_THRESHOLD_LAMBDA  # Regularization
+
+    exit_threshold_sigma: float = constant.DEFAULT_EXIT_THRESHOLD_SIGMA
+    exit_tolerance_sigma: float = constant.EXIT_TOLERANCE_SIGMA
+    stop_loss_sigma: float = constant.DEFAULT_STOP_LOSS_SIGMA          # Z-score stop
+    zscore_lookback: int = constant.DEFAULT_ZSCORE_LOOKBACK             # Default lookback
     
     # ==========================================================================
     # Adaptive Z-Score Lookback (QMA: lookback = f(half_life))
     # ==========================================================================
-    # Per QMA: Lookback should scale with pair's half-life for consistent signal quality
-    # Formula: lookback = clamp(4 * half_life, min_lookback, max_lookback)
-    # Faster mean-reversion (small HL) -> shorter lookback; slower -> longer lookback
-    use_adaptive_lookback: bool = True  # RECOMMENDED: True for QMA compliance
-    adaptive_lookback_multiplier: float = 4.0  # lookback = multiplier * half_life
-    adaptive_lookback_min: int = 30     # Minimum lookback (avoid noisy estimates)
-    adaptive_lookback_max: int = 120    # Maximum lookback (avoid stale estimates)
+    use_adaptive_lookback: bool = True
+    adaptive_lookback_multiplier: float = constant.ADAPTIVE_LOOKBACK_MULTIPLIER
+    adaptive_lookback_min: int = constant.ADAPTIVE_LOOKBACK_MIN
+    adaptive_lookback_max: int = constant.ADAPTIVE_LOOKBACK_MAX
     
     # ==========================================================================
     # QMA Level 2: Fixed Exit Parameters
     # ==========================================================================
-    # Per Quantitative Methods for Algorithmic Trading (QMA):
-    # Exit z-score should use FIXED mu_entry and sigma_entry captured at entry time.
-    # This prevents "Rolling Beta Trap" where exit z uses different distribution.
-    # When enabled, exit z = (spread - mu_entry) / sigma_entry
-    use_fixed_exit_params: bool = True  # RECOMMENDED: True for QMA compliance
+    use_fixed_exit_params: bool = True
     
     # ==========================================================================
     # Hedge Ratio Filter (NEW - improves win rate)
     # ==========================================================================
-    min_hedge_ratio: float = 0.5     # Min |HR| - avoids directional bets
-    max_hedge_ratio: float = 2.0     # Max |HR| - avoids over-hedging
+    min_hedge_ratio: float = constant.MIN_HEDGE_RATIO
+    max_hedge_ratio: float = constant.MAX_HEDGE_RATIO
     
     # ==========================================================================
     # Position Management
     # ==========================================================================
-    max_holding_days: int = 60       # Ch.8: ~3 x typical HL (fallback exit when dynamic=False)
-    max_positions: int = 10          # Max concurrent positions (0 = unlimited)
-    dynamic_hedge: bool = True       # Update hedge ratio during trading (rolling OLS)
-    dynamic_max_holding: bool = True # Scale max holding by half-life
-    max_holding_multiplier: float = 3.0  # max_hold = multiplier * half_life (no cap unless specified)
-    max_dynamic_holding_days: int = 0    # Optional cap for dynamic holding (0 = no cap)
-    hedge_ratio_method: str = "auto"     # "auto", "rolling", "kalman", or "fixed"
+    max_holding_days: int = constant.DEFAULT_MAX_HOLDING_DAYS
+    max_positions: int = constant.DEFAULT_MAX_POSITIONS
+    dynamic_hedge: bool = True
+    dynamic_max_holding: bool = True
+    max_holding_multiplier: float = constant.DEFAULT_MAX_HOLDING_MULTIPLIER
+    max_dynamic_holding_days: int = 0
+    hedge_ratio_method: str = "auto"
     
     # ==========================================================================
     # Capital Allocation (see engine.py for logic)
     # ==========================================================================
-    # When compounding=True:
-    #   position_capital = (current_capital * leverage) / max_positions
-    #   capital_per_pair is IGNORED
-    # When compounding=False:
-    #   position_capital = capital_per_pair * leverage
-    capital_per_pair: float = 10000.0  # Fixed notional per pair (ONLY used when compounding=False)
+    capital_per_pair: float = 10000.0
     
     # ==========================================================================
     # Vidyamurthy Framework - SNR & Tradability Filters (Ch.7)
     # ==========================================================================
-    min_snr: float = 0.0             # Minimum Signal-to-Noise Ratio (0 = disabled, recommend 1.5+)
-    min_zero_crossing_rate: float = 0.0  # Min zero crossings per year (0 = disabled, recommend 5+)
-    time_based_stops: bool = True    # Ch.8: RECOMMENDED - time-based stop tightening
-    stop_tightening_rate: float = 0.15 # Ch.8: Tighten 15% per HL elapsed
+    min_snr: float = 0.0
+    min_zero_crossing_rate: float = 0.0
+    time_based_stops: bool = True
+    stop_tightening_rate: float = constant.STOP_TIGHTENING_RATE
     
     # ==========================================================================
     # Adaptive Stop-Loss (scale with half-life)
     # ==========================================================================
-    # Rationale: Faster mean-reversion (short HL) should have tighter stops
-    # Faster mean-reversion (short HL) -> tighter stop (should recover quickly)
-    #           Slower mean-reversion (long HL) needs wider stops
-    #           (give more time for convergence)
-    # Formula: stop_sigma = base + 0.5 * (HL/10 - 1), clamped to [3.0, 5.0]
-    # HL=5:  3.25 sigma | HL=10: 3.5 sigma | HL=20: 4.0 sigma | HL=30: 4.5 sigma
-    use_adaptive_stop_loss: bool = True  # Enable half-life based stop scaling
+    use_adaptive_stop_loss: bool = True
     
     # [Vidyamurthy:Ch.7:p114-115] Bootstrap procedure for holding period estimation
-    use_bootstrap_holding_period: bool = True  # Use bootstrap for HL estimation
-    bootstrap_n_samples: int = 1000  # Number of bootstrap resamples
+    use_bootstrap_holding_period: bool = True
+    bootstrap_n_samples: int = 1000
     
     # ==========================================================================
     # Kalman Filter Dynamic Hedge Ratio
     # ==========================================================================
-    # Based on Palomar (2025) Chapter 15.6 "Kalman Filtering for Pairs Trading"
-    use_kalman_hedge: bool = False   # Use Kalman filter for dynamic hedge ratio
-    kalman_delta: float = 0.00001    # Process noise (smaller = more stable, typical: 1e-5 to 1e-6)
-    kalman_vw: float = 0.001         # Initial observation noise (will be adapted online)
-    kalman_use_momentum: bool = True # Use momentum model (Eq. 15.4) for smoother hedge ratios
-    kalman_zscore_regime: bool = True  # Use z-score based regime break (vs spread sign change)
-    kalman_regime_zscore: float = 3.0  # Z-score threshold for regime break when using Kalman
+    use_kalman_hedge: bool = False
+    kalman_delta: float = 0.00001
+    kalman_vw: float = 0.001
+    kalman_use_momentum: bool = True
+    kalman_zscore_regime: bool = True
+    kalman_regime_zscore: float = 3.0
     
     # ==========================================================================
     # VIX Regime Filter
     # ==========================================================================
-    use_vix_filter: bool = False     # Enable VIX-based regime filter
-    vix_threshold: float = 30.0      # Halt new entries when VIX > threshold
-    vix_lookback_days: int = 5       # Days to average VIX over
+    use_vix_filter: bool = False
+    vix_threshold: float = constant.VIX_THRESHOLD
+    vix_lookback_days: int = constant.VIX_LOOKBACK_DAYS
     
     # ==========================================================================
     # Volatility-Adjusted Position Sizing
     # ==========================================================================
-    use_vol_sizing: bool = False     # Enable volatility-adjusted position sizing
-    target_daily_vol: float = 0.02   # Target daily volatility (2%)
-    vol_size_min: float = 0.25       # Minimum position size (25% of base)
-    vol_size_max: float = 2.0        # Maximum position size (200% of base)
+    use_vol_sizing: bool = False
+    target_daily_vol: float = 0.02
+    vol_size_min: float = constant.VIX_MIN_SCALE
+    vol_size_max: float = constant.VIX_MAX_SCALE
     
     # ==========================================================================
     # Dynamic Z-Score Exit
     # ==========================================================================
-    use_dynamic_z_exit: bool = False         # Enable dynamic exit based on Z-score divergence
-    dynamic_z_exit_hl_ratio: float = 1.5     # Check after this many half-lives
-    dynamic_z_exit_threshold: float = 0.0    # Exit if |current_z| >= |entry_z| + threshold
+    use_dynamic_z_exit: bool = False
+    dynamic_z_exit_hl_ratio: float = 1.5
+    dynamic_z_exit_threshold: float = 0.0
     
     # ==========================================================================
     # Slow Convergence Exit
     # ==========================================================================
-    use_slow_convergence_exit: bool = False  # Exit if Z hasn't converged enough
-    slow_conv_hl_ratio: float = 1.5          # Check after this many half-lives
-    slow_conv_z_pct: float = 0.50            # Exit if Z remaining > this % of entry Z
+    use_slow_convergence_exit: bool = False
+    
+    # ==========================================================================
+    # Cointegration Drift Monitoring (CRITICAL FIX)
+    # ==========================================================================
+    enable_cointegration_monitoring: bool = True
+    coint_check_frequency_days: int = constant.DRIFT_CHECK_FREQUENCY
+    coint_drift_pvalue_threshold: float = constant.DRIFT_PVALUE_THRESHOLD
+    coint_drift_lookback_days: int = constant.DRIFT_MONITOR_LOOKBACK
+    coint_drift_min_observations: int = constant.MIN_OBSERVATIONS_DRIFT
+    slow_conv_hl_ratio: float = 1.5
+    slow_conv_z_pct: float = 0.50
     
     # ==========================================================================
     # Compounding & Leverage
     # ==========================================================================
-    initial_capital: float = 50000.0   # Starting capital
-    leverage: float = 1.0              # Leverage multiplier (2.0 = 2x leverage)
-    compounding: bool = False          # Compound returns after each trade
-    unlimited_pairs: bool = False      # Allow unlimited pairs (no top_pairs limit)
-    max_capital_per_trade: float = 0.0 # Max capital per trade (0 = no limit)
-    min_pairs_for_trading: int = 3     # Minimum pairs required to trade (risk diversification)
+    initial_capital: float = 50000.0
+    leverage: float = 1.0
+    compounding: bool = False
+    unlimited_pairs: bool = False
+    max_capital_per_trade: float = 0.0
+    min_pairs_for_trading: int = 3
     
     # ==========================================================================
     # Costs and Risk
     # ==========================================================================
-    transaction_cost_bps: float = 10.0  # Default 10 bps for ETF pairs; override via config per regime
+    transaction_cost_bps: float = constant.DEFAULT_TRANSACTION_COST_BPS
     
     # ==========================================================================
     # Blacklist
     # ==========================================================================
-    blacklist_stoploss_rate: float = 0.30  # Blacklist if >30% stop-loss
-    blacklist_min_trades: int = 3          # Min trades before blacklisting
+    blacklist_stoploss_rate: float = constant.BLACKLIST_STOP_LOSS_RATE
+    blacklist_min_trades: int = constant.BLACKLIST_MIN_TRADES
     
     # ==========================================================================
     # Output
@@ -235,7 +229,7 @@ class BacktestConfig:
     save_trades: bool = True
     save_summary: bool = True
     save_config_snapshot: bool = True
-    timestamped_output: bool = True  # Create timestamped subfolder
+    timestamped_output: bool = True
     
     # ==========================================================================
     # Data Paths
@@ -378,47 +372,51 @@ def compute_zscore_lookback(half_life: float) -> int:
 
 def compute_optimal_threshold(slippage_bps: float = 0.0) -> float:
     """
-    Compute optimal entry threshold per QMA Chapter 8.
-    
+    Compute optimal entry threshold using white noise formula (Vidyamurthy Ch.8).
+
     For white-noise spreads, the optimal threshold Delta* maximizes:
         f(Delta) = Delta * [1 - N(Delta)]
-    
+
     where N(Delta) is the CDF of the standard normal distribution.
-    
+
     Solving the first-order condition:
         d/dDelta [Delta(1 - N(Delta))] = 0
         [1 - N(Delta)] - Delta * n(Delta) = 0
-    
-    gives Delta* ~ 0.7477 (approximately 0.75 sigma).
-    
+
+    The solution depends on transaction costs. With zero costs, the theoretical
+    optimum is around 0.7477σ. With transaction costs, it will be higher.
+
+    IMPORTANT: This value is COMPUTED, not hardcoded. It varies based on:
+    - Transaction costs (slippage_bps parameter)
+    - Spread characteristics (implicitly, via the white noise assumption)
+
     Interpretation:
     - Delta too small -> many trades, but small profit per trade
     - Delta too large -> big profit per trade, but few trades
-    - Delta* = 0.75 sigma is the economically optimal balance
-    
+    - Delta* is the economically optimal balance between frequency and profit
+
     Parameters
     ----------
     slippage_bps : float
-        Transaction cost in basis points. If > 0, adjusts threshold
-        to ensure profit > slippage.
-        
+        Transaction cost in basis points. Higher costs -> higher optimal threshold.
+
     Returns
     -------
     float
-        Optimal threshold in units of standard deviation
-        
+        Optimal threshold in units of standard deviation, COMPUTED from formula
+
     Example
     -------
     >>> compute_optimal_threshold()
-    0.7477  # approximately 0.75
-    
-    >>> compute_optimal_threshold(slippage_bps=10)  # With 10 bps slippage
-    0.78  # Slightly higher to cover costs
-    
+    0.7477  # Computed result with zero transaction costs
+
+    >>> compute_optimal_threshold(slippage_bps=10)
+    0.78  # Computed result adjusted for 10 bps slippage
+
     Notes
     -----
-    This assumes white noise spread. For ARMA spreads, use Rice's formula
-    to compute level-crossing rates (not implemented here).
+    This assumes white noise spread. For ARMA spreads, use the nonparametric
+    approach (compute_nonparametric_threshold) which uses actual data.
     """
     # Profit function: f(delta) = delta * (1 - N(delta))
     # We want to MAXIMIZE this, so minimize the negative
@@ -445,62 +443,125 @@ def compute_optimal_threshold(slippage_bps: float = 0.0) -> float:
 def compute_nonparametric_threshold(
     spread_series: np.ndarray,
     slippage_bps: float = 10.0,
-    n_levels: int = 30
-) -> float:
+    n_levels: int = 30,
+    lambda_reg: float = 0.0,
+    return_curve: bool = False
+) -> float | tuple[float, np.ndarray, np.ndarray]:
     """
     Compute optimal threshold using nonparametric approach from QMA Chapter 8.
-    
+
     Instead of assuming white noise, this method:
     1. Counts actual level crossings at various thresholds
     2. Computes profit = threshold * crossings for each level
-    3. Returns threshold that maximizes profit
-    
+    3. Applies regularization penalty (trading costs, risk)
+    4. Returns threshold that maximizes objective function
+
     This handles ARMA-like spreads that deviate from white noise assumption.
-    
+
+    Regularization (Vidyamurthy Ch.8 Section 8.3):
+        Objective = Profit(Δ) - λ × Cost(Δ)
+
+        where Cost(Δ) = (# of trades) × (transaction cost per trade)
+
+        λ = 0.0: No regularization (pure profit maximization, may overfit)
+        λ = 0.5: Balanced (profit vs trading frequency)
+        λ = 1.0: Conservative (penalize frequent trading heavily)
+
     Parameters
     ----------
     spread_series : np.ndarray
         Historical spread values (should be standardized: mean=0, std=1)
     slippage_bps : float
-        Transaction cost in basis points
+        Transaction cost in basis points (e.g., 10 = 0.10%)
     n_levels : int
         Number of threshold levels to evaluate
-        
+    lambda_reg : float
+        Regularization parameter (0.0 to 1.0+)
+        Controls trade-off between profit and trading frequency
+    return_curve : bool
+        If True, return (optimal_delta, deltas, objectives) for visualization
+
     Returns
     -------
-    float
-        Optimal threshold based on historical data
+    float or tuple
+        If return_curve=False: optimal threshold
+        If return_curve=True: (optimal_delta, deltas_array, objectives_array)
+
+    Examples
+    --------
+    >>> spread = np.random.randn(252)  # 1 year of daily data
+    >>> optimal_delta = compute_nonparametric_threshold(spread, slippage_bps=10, lambda_reg=0.2)
+    >>> print(f"Optimal Δ = {optimal_delta}σ")
+
+    >>> # Get full profit curve for visualization
+    >>> delta_opt, deltas, objectives = compute_nonparametric_threshold(
+    ...     spread, slippage_bps=10, lambda_reg=0.2, return_curve=True
+    ... )
+    >>> import matplotlib.pyplot as plt
+    >>> plt.plot(deltas, objectives)
+    >>> plt.axvline(delta_opt, color='r', label=f'Optimal Δ={delta_opt}')
+    >>> plt.xlabel('Threshold (Δ)')
+    >>> plt.ylabel('Objective (Profit - λ×Cost)')
+    >>> plt.legend()
+    >>> plt.show()
     """
     # Standardize spread
     spread = np.asarray(spread_series)
-    spread_std = (spread - np.mean(spread)) / np.std(spread)
-    
-    # Candidate thresholds
-    deltas = np.linspace(0.3, 2.5, n_levels)
+    if len(spread) < 20:
+        # Not enough data, compute white noise optimal as fallback
+        wn_optimal = compute_optimal_threshold(slippage_bps)
+        return wn_optimal if not return_curve else (wn_optimal, np.array([wn_optimal]), np.array([0.0]))
+
+    spread_std = (spread - np.mean(spread)) / (np.std(spread) + 1e-8)
+
+    # Candidate thresholds (from 0.3σ to 3.0σ)
+    deltas = np.linspace(0.3, 3.0, n_levels)
     profits = []
-    
+    n_trades_list = []
+
     for delta in deltas:
         # Count level crossings (transitions across +/- delta)
         above_upper = spread_std >= delta
         below_lower = spread_std <= -delta
-        
+
         # Entry signals: crossing into extreme region
         long_entries = ((~below_lower[:-1]) & below_lower[1:]).sum()
         short_entries = ((~above_upper[:-1]) & above_upper[1:]).sum()
-        
+
         total_crossings = long_entries + short_entries
-        
+        n_trades_list.append(total_crossings)
+
         # Profit per trade = 2 * delta (buy at -delta, sell at +delta)
         # Minus slippage (converted to sigma units)
         slippage_sigma = slippage_bps / 1000
         profit_per_trade = 2 * delta - slippage_sigma
-        
-        total_profit = profit_per_trade * total_crossings
-        profits.append(total_profit)
-    
+
+        gross_profit = profit_per_trade * total_crossings
+        profits.append(gross_profit)
+
+    profits = np.array(profits)
+    n_trades_list = np.array(n_trades_list)
+
+    # Regularization: penalize frequent trading
+    # Cost = lambda * (# trades) * (transaction cost per trade)
+    transaction_cost_per_trade = slippage_bps / 10000  # Convert bps to decimal
+    regularization_penalty = lambda_reg * n_trades_list * transaction_cost_per_trade
+
+    # Objective = Profit - Penalty
+    objectives = profits - regularization_penalty
+
     # Find optimal
-    optimal_idx = np.argmax(profits)
-    return round(deltas[optimal_idx], 2)
+    if len(objectives) == 0 or np.all(objectives <= 0):
+        # No profitable threshold found, compute white noise optimal as fallback
+        optimal_delta = compute_optimal_threshold(slippage_bps)
+    else:
+        optimal_idx = np.argmax(objectives)
+        optimal_delta = round(deltas[optimal_idx], 2)
+
+    if return_curve:
+        return optimal_delta, deltas, objectives
+    else:
+        return optimal_delta
 
 
 def bootstrap_holding_period(

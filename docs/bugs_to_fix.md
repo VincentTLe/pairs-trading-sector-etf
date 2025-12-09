@@ -2,8 +2,76 @@
 
 ## Status Legend
 - ❌ Not Fixed
-- 🔄 In Progress  
+- 🔄 In Progress
 - ✅ Fixed
+
+---
+
+# 🔴 CRITICAL BUGS - ACTIVE
+
+## Bug #13: Stop-Loss Parameter Not Working ❌ CRITICAL - NOT FIXED
+
+**Discovered:** 2025-12-05 (Session 17)
+
+**Status:** ❌ NOT FIXED
+
+**Problem:**
+The `stop_loss_sigma` parameter in YAML config files is **NOT affecting backtest results**. Both extreme values (5.0 and 99.0) produce IDENTICAL results.
+
+**Evidence:**
+```
+Test 1: vidyamurthy_practical.yaml (stop_loss_sigma = 99.0)
+  Total PnL: +$1,061.44
+  Total Trades: 101
+  Stop-loss exits: 20
+
+Test 2: balanced_stop_loss.yaml (stop_loss_sigma = 5.0)
+  Total PnL: +$1,061.44 (EXACT SAME)
+  Total Trades: 101 (EXACT SAME)
+  Stop-loss exits: 20 (EXACT SAME)
+```
+
+Both configs produce byte-for-byte identical results despite 20x difference in stop-loss parameter.
+
+**Impact:**
+- Cannot test different stop-loss strategies
+- Current stop-loss exits destroying value (-$2,570 over 20 trades)
+- Unable to optimize risk management
+- **CRITICAL** for strategy validation
+
+**Hypothesis:**
+Code may be using hardcoded default instead of reading from config:
+
+```python
+# Suspected location: engine.py around line 1406
+stop_loss = getattr(cfg, 'stop_loss_sigma', 4.0)
+# May always fall back to 4.0 default?
+
+# Or config loading may not update the attribute properly
+```
+
+**Alternative Hypotheses:**
+1. Config file not being read at all (uses defaults)
+2. Parameter renamed but old name still used in code
+3. Parameter overridden somewhere in the call chain
+4. Backward compatibility code using wrong parameter name
+
+**Debug Steps Required:**
+1. Add logging to print `cfg.stop_loss_sigma` value at runtime
+2. Check if config YAML is properly loaded (print all params)
+3. Search for all uses of `stop_loss` in engine.py
+4. Check for parameter name mismatches (zscore vs sigma)
+5. Verify BacktestConfig dataclass has correct field names
+
+**Files to Investigate:**
+- `src/pairs_trading_etf/backtests/engine.py` (stop-loss logic)
+- `src/pairs_trading_etf/backtests/config.py` (BacktestConfig dataclass)
+- `scripts/run_backtest.py` (config loading)
+
+**Workaround:**
+None - parameter must be fixed before strategy can be properly evaluated.
+
+**Priority:** 🔴 **HIGHEST** - Blocks all stop-loss optimization work
 
 ---
 

@@ -1,0 +1,49 @@
+{
+  "config_name": "quick_viz_demo",
+  "timestamp": "2025-12-08_23-44",
+  "performance": {
+    "total_pnl": -99.15873109552413,
+    "total_trades": 108,
+    "win_rate": 0.48148148148148145,
+    "sharpe_ratio": -0.10357923547304229,
+    "max_drawdown": 1596.0998553216186,
+    "profit_factor": 0.9820589819105485
+  },
+  "walkforward": {
+    "avg_is_return": 0.001018399917252521,
+    "avg_oos_return": -4.815859942760297e-05,
+    "positive_ratio": 0.26666666666666666,
+    "purge_days": 21,
+    "embargo_days": 11,
+    "passed": false,
+    "warnings": [
+      "OOS positive ratio 26.7% < 55.0%",
+      "Average OOS return -0.0048% < 0.0000%"
+    ]
+  },
+  "cscv": {
+    "pbo": 0.3373015873015873,
+    "pbo_ci": [
+      0.0,
+      1.0
+    ],
+    "dsr": 2.9444864972285583,
+    "dsr_pvalue": 0.0016174553084336019,
+    "degradation": 0.15947866924623982,
+    "rank_correlation": 1.0,
+    "risk_level": "MODERATE",
+    "is_overfit": false
+  },
+  "validation": {
+    "is_valid": false,
+    "cscv_passed": false,
+    "walkforward_passed": false,
+    "risk_level": "MODERATE",
+    "errors": [
+      "Walk-forward validation failed (positive 26.7%, avg OOS -0.00%)"
+    ],
+    "warnings": [
+      "Negative PnL ($-99.16). Strategy is unprofitable."
+    ]
+  }
+}

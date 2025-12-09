@@ -1,0 +1,70 @@
+# Quick backtest config for visualization demo
+# Shorter windows to ensure sufficient data
+
+experiment_name: quick_viz_demo
+description: "Quick backtest with shorter windows for visualization"
+
+# Shorter formation/trading windows
+formation_days: 180     # 180 days (~9 months)
+trading_days: 90        # 90 days (~3 months)
+
+# Pair Selection
+pvalue_threshold: 0.05  # Standard 5% significance
+use_log_prices: true
+min_half_life: 5.0
+max_half_life: 50.0
+min_correlation: 0.75
+max_correlation: 0.95
+
+rolling_consistency: false
+top_pairs: 20
+max_pairs_per_sector: 5
+max_pairs_per_etf: 2
+
+# Trading signals
+entry_threshold_sigma: 2.0
+exit_threshold_sigma: 0.5
+exit_tolerance_sigma: 0.1
+stop_loss_sigma: 4.0
+
+# Adaptive features
+use_adaptive_lookback: true
+adaptive_lookback_multiplier: 4.0
+adaptive_lookback_min: 30
+adaptive_lookback_max: 120
+use_fixed_exit_params: true
+
+# Position management
+max_holding_days: 60
+dynamic_max_holding: true
+max_holding_multiplier: 3.0
+max_positions: 10
+
+# Capital
+initial_capital: 50000
+capital_per_pair: 10000
+compounding: false
+leverage: 1.0
+transaction_cost_bps: 10.0
+
+# Cointegration monitoring (Session 19)
+enable_cointegration_monitoring: true
+coint_check_frequency_days: 21
+coint_drift_pvalue_threshold: 0.15
+coint_drift_lookback_days: 60
+coint_drift_min_observations: 30
+
+# Hedge updates
+dynamic_hedge: true
+hedge_update_days: 30
+
+# Output
+output_dir: results
+save_trades: true
+save_summary: true
+save_config_snapshot: true
+timestamped_output: true
+
+# Data paths
+price_data_path: data/raw/etf_prices_fresh.csv
+etf_metadata_path: configs/etf_metadata.yaml
