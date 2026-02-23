@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(tee:*)",
+      "Bash(cat:*)",
+      "Bash(pip install:*)",
+      "Bash(timeout 300 python:*)",
+      "Bash(git log:*)",
+      "Bash(set PYTHONPATH=I:Winter-Break-Researchsrc)",
+      "Bash(cd:*)",
+      "Bash(ren:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

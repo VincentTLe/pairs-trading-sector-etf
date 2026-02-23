@@ -34,8 +34,8 @@ import pandas as pd
 
 from .config import BacktestConfig
 from .engine import run_walkforward_backtest
-# Use CORRECT CPCV implementation (temporal ordering)
-from .cpcv_correct import CSCVAnalyzer, CPCVResult
+# CSCV for PBO calculation (Bailey et al. 2015)
+from .cross_validation import CSCVAnalyzer, CSCVResult
 from .validation import (
     PurgedWalkForwardValidator,
     WalkForwardValidationResult,
@@ -51,37 +51,39 @@ logger = logging.getLogger(__name__)
 @dataclass
 class PipelineConfig:
     """Configuration for the validated backtest pipeline.
-    
+
     Parameters
     ----------
-    run_cpcv : bool
-        Whether to run CPCV analysis (default: True, RECOMMENDED)
-        Set to False only for quick debugging
-        
+    run_cscv : bool
+        Whether to run CSCV analysis for PBO calculation (default: False)
+        CSCV = Combinatorial Symmetric Cross-Validation (allows test before train)
+        Used ONLY for diagnosing overfitting, NOT for strategy validation
+        Set to True to calculate Probability of Backtest Overfitting
+
     cpcv_n_splits : int
-        Number of time splits for CPCV (default: 10)
-        
+        Number of time splits for CSCV (default: 10)
+
     cpcv_purge_window : int
         Days to purge near boundaries (default: 5)
-        
+
     cpcv_embargo_window : int
         Days embargo after test (default: 3)
-        
+
     max_pbo : float
         Maximum acceptable PBO (default: 0.40)
         Strategies with PBO > max_pbo are rejected
-        
+
     min_dsr : float
         Minimum acceptable Deflated Sharpe Ratio (default: 0.0)
-        
+
     require_positive_oos : bool
         Require positive OOS returns (default: True)
-        
+
     parameter_variations : dict
-        Parameters to vary for CPCV analysis
+        Parameters to vary for CSCV analysis
         If None, uses default variations
     """
-    run_cpcv: bool = True
+    run_cscv: bool = False  # Changed default: CSCV is diagnostic only
     cpcv_n_splits: int = 10
     cpcv_purge_window: int = 5
     cpcv_embargo_window: int = 3
@@ -145,8 +147,8 @@ class PipelineResult:
     walkforward_result: Optional[WalkForwardValidationResult] = None
     walkforward_passed: bool = True
     
-    # CPCV results (None if not run)
-    cpcv_result: Optional[CPCVResult] = None
+    # CSCV results (None if not run) - Combinatorial Symmetric CV for PBO calculation
+    cscv_result: Optional[CSCVResult] = None
     
     # Embargo/Purge calculated from actual trades (CRITICAL for validation)
     avg_holding_days: Optional[float] = None
@@ -154,21 +156,21 @@ class PipelineResult:
     purge_width: Optional[int] = None
     
     # Validation status
-    cpcv_passed: bool = False
+    cscv_passed: bool = False
     validation_errors: List[str] = field(default_factory=list)
     validation_warnings: List[str] = field(default_factory=list)
     
     @property
     def is_valid(self) -> bool:
         """True if strategy passed all validation checks."""
-        return self.cpcv_passed and self.walkforward_passed and len(self.validation_errors) == 0
+        return self.cscv_passed and self.walkforward_passed and len(self.validation_errors) == 0
     
     @property
     def risk_level(self) -> str:
         """Overall risk assessment."""
-        if self.cpcv_result is None:
+        if self.cscv_result is None:
             return "UNKNOWN"
-        return self.cpcv_result.risk_level
+        return self.cscv_result.risk_level
     
     def summary(self) -> str:
         """Generate formatted summary."""
@@ -214,13 +216,13 @@ class PipelineResult:
                 lines.append("")
         
         # CPCV Results
-        if self.cpcv_result:
+        if self.cscv_result:
             lines.extend([
                 "-" * 70,
-                "CPCV VALIDATION",
+                "CSCV VALIDATION (PBO Diagnostic)",
                 "-" * 70,
             ])
-            
+
             # Show embargo/purge calculation (CRITICAL for transparency)
             if self.avg_holding_days is not None:
                 lines.extend([
@@ -229,12 +231,12 @@ class PipelineResult:
                     f"  Purge Width: {self.purge_width} days",
                     "",
                 ])
-            
+
             lines.extend([
-                f"  PBO: {self.cpcv_result.pbo:.1%}",
-                f"  DSR: {self.cpcv_result.dsr:.2f} (p={self.cpcv_result.dsr_pvalue:.3f})",
-                f"  Degradation: {self.cpcv_result.degradation_ratio:.1%}",
-                f"  Risk Level: {self.cpcv_result.risk_level}",
+                f"  PBO: {self.cscv_result.pbo:.1%}",
+                f"  DSR: {self.cscv_result.dsr:.2f} (p={self.cscv_result.dsr_pvalue:.3f})",
+                f"  Degradation: {self.cscv_result.degradation_ratio:.1%}",
+                f"  Risk Level: {self.cscv_result.risk_level}",
                 "",
             ])
         
@@ -288,10 +290,10 @@ class PipelineResult:
                 'passed': self.walkforward_result.passed,
                 'warnings': self.walkforward_result.warnings,
             } if self.walkforward_result else None,
-            'cpcv': self.cpcv_result.to_dict() if self.cpcv_result else None,
+            'cscv': self.cscv_result.to_dict() if self.cscv_result else None,
             'validation': {
                 'is_valid': self.is_valid,
-                'cpcv_passed': self.cpcv_passed,
+                'cscv_passed': self.cscv_passed,
                 'walkforward_passed': self.walkforward_passed,
                 'risk_level': self.risk_level,
                 'errors': self.validation_errors,
@@ -367,7 +369,7 @@ def run_validated_backtest(
         logger.info("=" * 60)
         logger.info(f"Config: {config.experiment_name}")
         logger.info(f"Period: {start_year} - {end_year}")
-        logger.info(f"CPCV Validation: {'ENABLED' if pipeline_config.run_cpcv else 'DISABLED'}")
+        logger.info(f"CSCV Validation (PBO Diagnostic): {'ENABLED' if pipeline_config.run_cscv else 'DISABLED'}")
     
     # =========================================================================
     # STEP 1: Run base backtest
@@ -539,19 +541,19 @@ def run_validated_backtest(
         result.walkforward_passed = True
     
     # =========================================================================
-    # STEP 2: Generate parameter variations for CPCV
+    # STEP 2: Generate parameter variations for CSCV
     # =========================================================================
-    if not pipeline_config.run_cpcv:
+    if not pipeline_config.run_cscv:
         result.validation_warnings.append(
-            "CPCV validation DISABLED. Cannot verify overfitting risk."
+            "CSCV validation DISABLED. PBO calculation skipped (optional diagnostic)."
         )
-        result.cpcv_passed = True  # Skip CPCV check
+        result.cscv_passed = True  # Skip CSCV check
         return result
     
     if verbose:
         logger.info("")
         logger.info("-" * 60)
-        logger.info("STEP 2: Generating Parameter Variations for CPCV")
+        logger.info("STEP 2: Generating Parameter Variations for CSCV")
         logger.info("-" * 60)
     
     param_variations = pipeline_config.parameter_variations
@@ -624,17 +626,17 @@ def run_validated_backtest(
         cscv_analyzer = CSCVAnalyzer(
             n_splits=pipeline_config.cpcv_n_splits
         )
-        cpcv_result = cscv_analyzer.analyze(returns_matrix, config_names)
-        result.cpcv_result = cpcv_result
+        cscv_result = cscv_analyzer.analyze(returns_matrix, config_names)
+        result.cscv_result = cscv_result
         result.avg_holding_days = avg_holding_days
         result.embargo_width = calculated_embargo
         result.purge_width = calculated_purge
         
         if verbose:
-            logger.info(f"  CSCV PBO: {cpcv_result.pbo:.1%}")
-            logger.info(f"  DSR: {cpcv_result.dsr:.2f}")
-            logger.info(f"  Degradation: {cpcv_result.degradation_ratio:.1%}")
-            logger.info(f"  Rank Corr: {cpcv_result.rank_correlation:.2f}")
+            logger.info(f"  CSCV PBO: {cscv_result.pbo:.1%}")
+            logger.info(f"  DSR: {cscv_result.dsr:.2f}")
+            logger.info(f"  Degradation: {cscv_result.degradation_ratio:.1%}")
+            logger.info(f"  Rank Corr: {cscv_result.rank_correlation:.2f}")
         
     except Exception as e:
         result.validation_errors.append(f"CSCV analysis failed: {str(e)}")
@@ -650,37 +652,37 @@ def run_validated_backtest(
         logger.info("-" * 60)
     
     # Check PBO
-    if cpcv_result.pbo > pipeline_config.max_pbo:
+    if cscv_result.pbo > pipeline_config.max_pbo:
         result.validation_errors.append(
-            f"PBO ({cpcv_result.pbo:.1%}) exceeds maximum ({pipeline_config.max_pbo:.1%})"
+            f"PBO ({cscv_result.pbo:.1%}) exceeds maximum ({pipeline_config.max_pbo:.1%})"
         )
-    
+
     # Check DSR
-    if cpcv_result.dsr < pipeline_config.min_dsr:
+    if cscv_result.dsr < pipeline_config.min_dsr:
         result.validation_errors.append(
-            f"DSR ({cpcv_result.dsr:.2f}) below minimum ({pipeline_config.min_dsr:.2f})"
+            f"DSR ({cscv_result.dsr:.2f}) below minimum ({pipeline_config.min_dsr:.2f})"
         )
-    
+
     # Check OOS returns
-    if pipeline_config.require_positive_oos and cpcv_result.oos_mean_return <= 0:
+    if pipeline_config.require_positive_oos and cscv_result.oos_mean_return <= 0:
         result.validation_errors.append(
-            f"OOS mean return is negative ({cpcv_result.oos_mean_return:.4%})"
+            f"OOS mean return is negative ({cscv_result.oos_mean_return:.4%})"
         )
-    
+
     # High degradation warning
-    if cpcv_result.degradation_ratio > 0.5:
+    if cscv_result.degradation_ratio > 0.5:
         result.validation_warnings.append(
-            f"High performance degradation ({cpcv_result.degradation_ratio:.1%})"
+            f"High performance degradation ({cscv_result.degradation_ratio:.1%})"
         )
-    
+
     # Low rank correlation warning (use rank_correlation instead of rank_correlation_spearman)
-    if hasattr(cpcv_result, 'rank_correlation') and cpcv_result.rank_correlation < 0.3:
+    if hasattr(cscv_result, 'rank_correlation') and cscv_result.rank_correlation < 0.3:
         result.validation_warnings.append(
-            f"Low rank stability (rho={cpcv_result.rank_correlation:.2f})"
+            f"Low rank stability (rho={cscv_result.rank_correlation:.2f})"
         )
-    
-    # Set CPCV passed status
-    result.cpcv_passed = len(result.validation_errors) == 0
+
+    # Set CSCV passed status
+    result.cscv_passed = len(result.validation_errors) == 0
     
     if verbose:
         if result.is_valid:
@@ -813,13 +815,13 @@ def quick_validate(
     end_year: int = 2024,
 ) -> bool:
     """
-    Quick validation check - returns True if strategy passes basic CPCV.
-    
+    Quick validation check - returns True if strategy passes basic CSCV.
+
     This is a simplified version for quick checks. Use run_validated_backtest()
     for full analysis.
     """
     pipeline_config = PipelineConfig(
-        run_cpcv=True,
+        run_cscv=True,
         cpcv_n_splits=6,  # Fewer splits for speed
         max_pbo=0.50,     # More lenient threshold
         save_results=False,

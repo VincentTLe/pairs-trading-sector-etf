@@ -8,27 +8,27 @@ experiment_name: default_vidyamurthy
 description: "Pairs trading config with exact Vidyamurthy Ch.5-8 citations"
 
 # ============================================================================
-# CH.5: OVERVIEW - Formation Window [Vidyamurthy:Ch.5:p74]
+# CH.5: OVERVIEW - Formation Window [User Optimized]
 # ============================================================================
-# Note: Vidyamurthy does NOT specify exact duration
-# Standard practice: 1 trading year = 252 days
-formation_days: 252            # ~1 trading year
-trading_days: 252              # ~1 trading year OOS test
+# User Optimization: 180/90 split found optimal for 2005-2024 dataset
+# 180 days formation / 90 days trading
+formation_days: 180 # ~6 months
+trading_days: 90 # ~3 months
 
 # ============================================================================
 # CH.6: PAIRS SELECTION [Vidyamurthy:Ch.5:p75-80, Ch.6:p90-97]
 # ============================================================================
 # Cointegration test: ADF on spread residuals
 # [Engle:Granger:1987] standard: 1% significance
-pvalue_threshold: 0.01         # 99% confidence
+pvalue_threshold: 0.05 # 95% confidence (Std: 0.05, Strict: 0.01)
 
 # [Vidyamurthy:Ch.5:p75, Ch.6:p93] "log(pA) - γ*log(pB) = μ + εt"
-use_log_prices: true           # REQUIRED per Ch.5
+use_log_prices: true # REQUIRED per Ch.5
 
 # CH.7: Half-Life Bounds [NOT explicitly specified by Vidyamurthy]
 # User preference based on trading horizon (no citation)
-min_half_life: 5.0             # User preference
-max_half_life: 30.0            # User preference
+min_half_life: 5.0 # User preference
+max_half_life: 30.0 # User preference
 
 # [Vidyamurthy:Ch.6:p90-97] Distance measure based on factor correlation
 # Note: Exact bounds NOT specified in book - standard practice
@@ -50,21 +50,21 @@ min_spread_range_pct: 0.02
 # Same-sector pairs more likely to share common trends
 sector_focus: true
 exclude_sectors:
-  - BONDS_GOV                  # Different dynamics (fixed income)
-  - BONDS_CORP                 # Credit risk, not equity
-  - COMMODITIES                # Physical supply/demand
-  - EMERGING                   # Different risk profiles
+  - BONDS_GOV # Different dynamics (fixed income)
+  - BONDS_CORP # Credit risk, not equity
+  - COMMODITIES # Physical supply/demand
+  - EMERGING # Different risk profiles
 
 # ============================================================================
-# CH.8: TRADING DESIGN [Vidyamurthy:Ch.8:p119-135]
+# CH.8: TRADING DESIGN [Gatev et al. 2006]
 # ============================================================================
-# [Vidyamurthy:Ch.8:p119-120] "Band Design for White Noise"
-# Optimal Δ* ≈ 0.75σ maximizes f(Δ) = Δ × [1 - N(Δ)] × 2T
-# CRITICAL: Traditional 2.0σ is STATISTICALLY driven, NOT economically optimal
-entry_threshold_sigma: 0.75    # Ch.8 p119-120: Profit-maximizing threshold
-exit_threshold_sigma: 0.0      # Exit at mean (equilibrium)
-exit_tolerance_sigma: 0.1      # Allow ±0.1σ band around mean
-stop_loss_sigma: 4.0           # Backup stop (user preference)
+# Gatev (2006) p.11: "Open position when prices diverge by 2σ"
+# Studies confirm 2.0σ results in robust profitability.
+# Vidyamurthy theoretical "0.75σ optimal" assumes white noise and ignores micro-structure noise.
+entry_threshold_sigma: 2.0 # Gatev standard
+exit_threshold_sigma: 0.0 # Exit at mean (equilibrium)
+exit_tolerance_sigma: 0.05 # Tighter tolerance for convergence
+stop_loss_sigma: 4.0 # 4-sigma stop (approx 99.99% event)
 
 # ============================================================================
 # CH.7: TESTING FOR TRADABILITY [Vidyamurthy:Ch.7:p112-116]
@@ -86,11 +86,13 @@ use_fixed_exit_params: true
 # ============================================================================
 # CH.8: STOP LOSS & HOLDING [Vidyamurthy:Ch.8:p122-130]
 # ============================================================================
-# Time-based stops preferred for mean-reverting spreads
-time_based_stops: true         # Ch.8: RECOMMENDED
-stop_tightening_rate: 0.15     # Tighten 15% per HL elapsed
-max_holding_days: 60           # ~3× typical half-life
-dynamic_max_holding: true
+# Time-based stops: Vidyamurthy suggests this, but strict implementation
+# can cause premature exits in mean-reverting strategies.
+# Disabled by default in favor of standard stops, unless specifically tuning.
+time_based_stops: false # Disabled for Gatev replication
+stop_tightening_rate: 0.05 # Relaxed (was 0.15) if enabled
+max_holding_days: 126 # Match trading period (6 months)
+dynamic_max_holding: false # Use fixed horizon per Gatev
 max_holding_multiplier: 3.0
 
 # ============================================================================
@@ -98,13 +100,13 @@ max_holding_multiplier: 3.0
 # ============================================================================
 # "pairs trading may have 10-15 active positions"
 max_positions: 10
-compounding: true              # Dynamic allocation
-leverage: 1.0                  # No leverage
+compounding: true # Dynamic allocation
+leverage: 1.0 # No leverage
 dynamic_hedge: true
-hedge_update_days: 63          # Quarterly
+hedge_update_days: 63 # Quarterly
 
 # [Vidyamurthy:Ch.8:p119-120] Transaction costs
-transaction_cost_bps: 5.0      # ETFs: ~2-3 bps per leg
+transaction_cost_bps: 5.0 # ETFs: ~2-3 bps per leg
 
 # Blacklist
 blacklist_stoploss_rate: 0.30

@@ -1,0 +1,3 @@
+trading_year,pairs_selected,total_trades,winning_trades,win_rate,total_pnl,ending_capital,stop_loss_exits,cointegration_drift_exits,convergence_exits,period_end_exits
+2015,7,25,12,48.0,-343.55945695097046,49656.44054304902,10,7,5,3.0
+2016,10,30,14,46.666666666666664,-235.25975334745664,49421.180789701575,16,11,3,

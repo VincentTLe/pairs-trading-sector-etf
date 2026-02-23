@@ -18,22 +18,6 @@ from pairs_trading_etf.data.universe import (
     load_etf_metadata,
 )
 
-# Global ETF extensions
-from pairs_trading_etf.data.global_universe import (
-    GlobalETFMetadata,
-    GlobalETFUniverse,
-    load_global_universe,
-    get_ticker_regions,
-    filter_universe_by_regions,
-)
-from pairs_trading_etf.data.global_downloader import (
-    GlobalDownloaderConfig,
-    DownloadResult,
-    download_global_etfs,
-    download_fx_rates,
-    save_global_data,
-)
-
 __all__ = [
     # Loader
     "PriceFrame",
@@ -49,15 +33,4 @@ __all__ = [
     "ETFUniverse",
     "load_configured_universe",
     "load_etf_metadata",
-    # Global extensions
-    "GlobalETFMetadata",
-    "GlobalETFUniverse",
-    "load_global_universe",
-    "get_ticker_regions",
-    "filter_universe_by_regions",
-    "GlobalDownloaderConfig",
-    "DownloadResult",
-    "download_global_etfs",
-    "download_fx_rates",
-    "save_global_data",
 ]

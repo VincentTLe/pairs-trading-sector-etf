@@ -1,0 +1,110 @@
+# ============================================================================
+# Vidyamurthy with OPTIMAL THRESHOLDS (Chapter 8)
+# ============================================================================
+# This config enables per-pair optimal threshold computation using:
+# 1. Nonparametric approach: sweep Δ from 0.3σ to 3.0σ, maximize profit
+# 2. Regularization: penalize trading frequency (λ = 0.2)
+# 3. Transaction costs: 5 bps integrated into threshold selection
+#
+# Compare this against vidyamurthy_practical.yaml (hardcoded Δ = 2.0σ)
+
+experiment_name: vidyamurthy_optimal
+description: "Vidyamurthy framework with optimal per-pair thresholds (Ch.8)"
+
+# ============================================================================
+# CH.5/6: FORMATION & PAIR SELECTION (Same as practical)
+# ============================================================================
+formation_days: 252
+trading_days: 252
+pvalue_threshold: 0.05
+use_log_prices: true
+
+min_half_life: 5.0
+max_half_life: 30.0
+
+min_correlation: 0.75
+max_correlation: 0.95
+
+top_pairs: 20
+max_pairs_per_sector: 5
+max_pairs_per_etf: 2
+min_spread_range_pct: 0.02
+
+sector_focus: true
+exclude_sectors:
+  - BONDS_GOV
+  - BONDS_CORP
+  - COMMODITIES
+  - EMERGING
+
+rolling_consistency: false
+
+# ============================================================================
+# CH.8: OPTIMAL THRESHOLD SELECTION ⭐ THIS IS THE KEY DIFFERENCE ⭐
+# ============================================================================
+use_optimal_entry_threshold: true  # ⭐ ENABLE optimal threshold per pair
+
+optimal_threshold_method: 'nonparametric'  # Use historical data to find optimal Δ
+# Options:
+#   - 'white_noise': Compute Δ* using formula argmax[Δ(1-N(Δ))] (fast but assumes white noise)
+#   - 'nonparametric': Data-driven Δ sweep (recommended, adapts to each pair)
+#   - 'both': Compute both and pick better one
+
+optimal_threshold_lambda: 0.2  # Regularization: penalize frequent trading
+# Objective = Profit - λ × (# trades × transaction_cost)
+# λ = 0.0: Pure profit maximization (may overfit)
+# λ = 0.2: Balanced (recommended)
+# λ = 0.5: Conservative
+
+# NOTE: entry_threshold_sigma is NOT used when use_optimal_entry_threshold=true
+# Each pair gets its own optimal Δ computed from data (nonparametric) or formula (white_noise)
+# If computation fails, white noise formula will be computed as fallback (NOT hardcoded)
+
+exit_threshold_sigma: 0.5
+exit_tolerance_sigma: 0.0
+stop_loss_sigma: 99.0  # Disable stop-loss to isolate threshold effect
+
+# ============================================================================
+# CH.7/8: TRADABILITY & EXITS (Same as practical)
+# ============================================================================
+use_bootstrap_holding_period: true
+bootstrap_n_samples: 1000
+
+use_adaptive_lookback: true
+adaptive_lookback_multiplier: 4.0
+adaptive_lookback_min: 20
+adaptive_lookback_max: 120
+
+use_fixed_exit_params: true
+
+time_based_stops: false
+stop_tightening_rate: 0.15
+max_holding_days: 60
+dynamic_max_holding: true
+max_holding_multiplier: 3.0
+
+# ============================================================================
+# PORTFOLIO (Same as practical)
+# ============================================================================
+max_positions: 10
+compounding: true
+leverage: 2.0
+dynamic_hedge: true
+hedge_update_days: 63
+min_pairs_for_trading: 1
+
+transaction_cost_bps: 5.0  # Used in optimal threshold calculation
+
+blacklist_stoploss_rate: 0.30
+blacklist_min_trades: 3
+
+# Output
+output_dir: results
+save_trades: true
+save_summary: true
+save_config_snapshot: true
+timestamped_output: true
+
+# Data Paths
+price_data_path: data/raw/etf_prices_fresh.csv
+etf_metadata_path: configs/etf_metadata.yaml

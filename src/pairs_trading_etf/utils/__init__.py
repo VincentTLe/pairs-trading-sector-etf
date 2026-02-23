@@ -1,13 +1,13 @@
 """Utility helpers (config, logging, sectors, etc.)."""
 
-from pairs_trading_etf.utils.validation import (
+from .validation import (
     WalkForwardWindow,
     walk_forward_split,
     simple_train_test_split,
     count_walk_forward_windows,
 )
 
-from pairs_trading_etf.utils.sectors import (
+from .sectors import (
     SECTOR_GROUPS,
     DEFAULT_EXCLUDED_SECTORS,
     RECOMMENDED_SECTORS,
